@@ -242,11 +242,11 @@ dataGreif12 = np.loadtxt('NS_data_eosGreif12.txt', unpack=True)
 
 
 
-dataPol0nr = np.loadtxt('NS_data_eosPol0nonrot.txt', unpack=True)
-dataPol0K = np.loadtxt('NS_data_eosPol0Kepler.txt', unpack=True)
-dataPol0ins = np.loadtxt('NS_data_eosPol0ins.txt', unpack=True)
-dataPol0J = np.loadtxt('NS_data_eosPol0J.txt', unpack=True)
-dataP0 = np.loadtxt('eosPol0table', unpack=True)
+#dataPol0nr = np.loadtxt('NS_data_eosPol0nonrot.txt', unpack=True)
+#dataPol0K = np.loadtxt('NS_data_eosPol0Kepler.txt', unpack=True)
+#dataPol0ins = np.loadtxt('NS_data_eosPol0ins.txt', unpack=True)
+#dataPol0J = np.loadtxt('NS_data_eosPol0J.txt', unpack=True)
+#dataP0 = np.loadtxt('eosPol0table', unpack=True)
 
 dataPol0 = np.loadtxt('NS_data_eosPol0.txt', unpack=True)
 dataPol1 = np.loadtxt('NS_data_eosPol1.txt', unpack=True)
@@ -273,16 +273,16 @@ dataBBB2 = np.loadtxt('NS_data_eosBBB2.txt', unpack=True)
 dataL = np.loadtxt('NS_data_eosL.txt', unpack=True)
 dataHLPS1 = np.loadtxt('NS_data_eosHLPS1.txt', unpack=True)
 dataHLPS2 = np.loadtxt('NS_data_eosHLPS2.txt', unpack=True)
-dataHLPS3 = np.loadtxt('NS_data_eosHLPS3.txt', unpack=True)
+#dataHLPS3 = np.loadtxt('NS_data_eosHLPS3.txt', unpack=True)
 dataABPR1 = np.loadtxt('NS_data_eosABPR1.txt', unpack=True)
 dataABPR2 = np.loadtxt('NS_data_eosABPR2.txt', unpack=True)
 dataQHCD = np.loadtxt('NS_data_eosQHC_D.txt', unpack=True)
 dataH0 = np.loadtxt('NS_data_eosH0.txt', unpack=True)
 #dataH0 = np.loadtxt('NS_data_eosQ160.txt', unpack=True)
-dataQ1 = np.loadtxt('NS_data_eosQ160.txt', unpack=True)
+#dataQ1 = np.loadtxt('NS_data_eosQ160.txt', unpack=True)
 #dataQ1 = np.loadtxt('NS_data_QMF18.txt', unpack=True)
-dataPol0rho1 = np.loadtxt('NS_data_eosPol0_rho1.txt', unpack=True)
-dataPol0rho2 = np.loadtxt('NS_data_eosPol0_rho2.txt', unpack=True)
+#dataPol0rho1 = np.loadtxt('NS_data_eosPol0_rho1.txt', unpack=True)
+#dataPol0rho2 = np.loadtxt('NS_data_eosPol0_rho2.txt', unpack=True)
 
 
 
@@ -295,21 +295,21 @@ Msun = 1
 
 '''
 
-ec = data[0,:]*10**15   # central energy density (in g/cm^3)
-M = data[1,:]           # Total mass (in Msun)
-M0 = data[2,:]          # Baryonic mass (in Msun)
-Mstat = data[3,:]       # Mass when the NS is not rotating (in Msun)
-#Mmax = data[4,:]        # Maximum mass for a given EOS (in Msun)
-R = data[5,:]           # Radius (in km)
-Rratio = data[6,:]      # Ratio rp/re
-Rstat = data[7,:]       # Radius when the NS is not rotating (in km)
-freq = data[8,:]        # Rotational frequency (in Hz)
-kfreq = data[9,:]       # Kepler limit (in Hz)
-J = data[10,:]          # Angular momentum (in cm^2 g/s)
-T = data[11,:]          # Rotational kinetic energy (in g)
-W = data[12,:]          # Gravitational binding energy (in g)
-#Rmax = data[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax = data[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec = data[0,:]*10**15   
+M = data[1,:]           
+M0 = data[2,:]          
+Mstat = data[3,:]       
+#Mmax = data[4,:]        
+R = data[5,:]           
+Rratio = data[6,:]      
+Rstat = data[7,:]       
+freq = data[8,:]        
+kfreq = data[9,:]       
+J = data[10,:]          
+T = data[11,:]          
+W = data[12,:]          
+#Rmax = data[13,:]       
+#Qmax = data[14,:]       
 Vp = data[15,:] 
 '''
 data=numpy.concatenate((dataGreif0, dataGreif1, dataGreif2, dataGreif3, dataGreif4, dataGreif5, dataGreif6, dataGreif7, dataGreif8, dataGreif9, dataGreif10,dataGreif11,dataGreif12,dataPol0 ,dataPol1 ,dataPol2 ,dataPol3 ,dataPol4 ,dataPol5 ,dataPol6 ,dataPol7  ,dataPol8 ,dataPol9 ,dataPol10 ,dataPol11 ,dataPol12 ,dataPol13 ,dataPol14 ,dataPol15 ,dataPol16 ,dataPol17 ,dataPol18),axis=1)
@@ -412,15 +412,15 @@ for i in freq[:]:
 
 # Converting parameters to CGS units
 # EOS 
-m = M * 1.9884e33   # Mass (in g)
-r = R * 1.0e5       # Radius (in cm)
-mmax = Mmax * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat = Rstat * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat = Mstat * 1.9884e33   # Mass of the non rotating NS (in g)
-delta = freq * (2*np.pi) * ((rstat**3)/(G*mstat))**(0.5)   # Normalized angular frequency
-m0 = M0 * 1.9884e33     # Baryonic mass
-normJ = (c*J)/(G*m0**2)     # Normalized angular momentum
-a = (c*J)/(G*m**2)         # spin parameter
+m = M * 1.9884e33   
+r = R * 1.0e5       
+mmax = Mmax * 1.9884e33   
+rstat = Rstat * 1.0e5   
+mstat = Mstat * 1.9884e33   
+delta = freq * (2*np.pi) * ((rstat**3)/(G*mstat))**(0.5)  
+m0 = M0 * 1.9884e33     
+normJ = (c*J)/(G*m0**2)    
+a = (c*J)/(G*m**2)         
 
 
 
@@ -521,34 +521,34 @@ for i in dataPol0[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_Pol0 = M_Pol0 * 1.9884e33   # Mass (in g)
-r_Pol0 = R_Pol0 * 1.0e5       # Radius (in cm)
-mmax_Pol0 = Mmax_Pol0 * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_Pol0 = Rstat_Pol0 * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_Pol0 = Mstat_Pol0 * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_Pol0 = freq_Pol0 * (2*np.pi) * ((rstat_Pol0**3)/(G*mstat_Pol0))**(0.5)/((SlopK4*(Mstat_Pol0/Rstat_Pol0)**4+SlopK3*(Mstat_Pol0/Rstat_Pol0)**3+SlopK2*(Mstat_Pol0/Rstat_Pol0)**2+SlopK*Mstat_Pol0/Rstat_Pol0+InterK))#**0.5   # Normalized angular frequency
-m0_Pol0 = M0_Pol0 * 1.9884e33     # Baryonic mass
-normJ_Pol0 = (c*J_Pol0)/(G*m0_Pol0**2)     # Normalized angular momentum
-a_Pol0 = (c*J_Pol0)/(G*m_Pol0**2)         # spin parameter
+m_Pol0 = M_Pol0 * 1.9884e33   
+r_Pol0 = R_Pol0 * 1.0e5       
+mmax_Pol0 = Mmax_Pol0 * 1.9884e33   
+rstat_Pol0 = Rstat_Pol0 * 1.0e5   
+mstat_Pol0 = Mstat_Pol0 * 1.9884e33   
+delta_Pol0 = freq_Pol0 * (2*np.pi) * ((rstat_Pol0**3)/(G*mstat_Pol0))**(0.5)/((SlopK4*(Mstat_Pol0/Rstat_Pol0)**4+SlopK3*(Mstat_Pol0/Rstat_Pol0)**3+SlopK2*(Mstat_Pol0/Rstat_Pol0)**2+SlopK*Mstat_Pol0/Rstat_Pol0+InterK))#**0.5  
+m0_Pol0 = M0_Pol0 * 1.9884e33     
+normJ_Pol0 = (c*J_Pol0)/(G*m0_Pol0**2)    
+a_Pol0 = (c*J_Pol0)/(G*m_Pol0**2)         
 
 
 
-
-ec_Pol0J = dataPol0J[0,:]*10**15   # central energy density (in g/cm^3)
-M_Pol0J = dataPol0J[1,:]           # Total mass (in Msun)
-M0_Pol0J = dataPol0J[2,:]          # Baryonic mass (in Msun)
-Mstat_Pol0J = dataPol0J[3,:]       # Mass when the NS is not rotating (in Msun)
-#Mmax_Pol0J = dataPol0J[4,:]        # Maximum mass for a given EOS (in Msun)
-R_Pol0J = dataPol0J[5,:]           # Radius (in km)
-Rratio_Pol0J = dataPol0J[6,:]      # Ratio rp/re
-Rstat_Pol0J = dataPol0J[7,:]       # Radius when the NS is not rotating (in km)
-freq_Pol0J = dataPol0J[8,:]        # Rotational frequency (in Hz)
-kfreq_Pol0J = dataPol0J[9,:]       # Kepler limit (in Hz)
-J_Pol0J = dataPol0J[10,:]          # Angular momentum (in cm^2 g/s)
-T_Pol0J = dataPol0J[11,:]          # Rotational kinetic energy (in g)
-W_Pol0J = dataPol0J[12,:]          # Gravitational binding energy (in g)
-#Rmax_Pol0J = dataPol0J[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_Pol0J = dataPol0J[14,:]       # MaxMass / MaxRadius of the non rotating star
+'''
+ec_Pol0J = dataPol0J[0,:]*10**15   
+M_Pol0J = dataPol0J[1,:]           
+M0_Pol0J = dataPol0J[2,:]          
+Mstat_Pol0J = dataPol0J[3,:]       
+#Mmax_Pol0J = dataPol0J[4,:]        
+R_Pol0J = dataPol0J[5,:]           
+Rratio_Pol0J = dataPol0J[6,:]      
+Rstat_Pol0J = dataPol0J[7,:]       
+freq_Pol0J = dataPol0J[8,:]        
+kfreq_Pol0J = dataPol0J[9,:]       
+J_Pol0J = dataPol0J[10,:]          
+T_Pol0J = dataPol0J[11,:]          
+W_Pol0J = dataPol0J[12,:]          
+#Rmax_Pol0J = dataPol0J[13,:]       
+#Qmax_Pol0J = dataPol0J[14,:]       
 
 Mmax0=0;
 for i in dataPol0J[1,:]:
@@ -585,31 +585,31 @@ for i in dataPol0J[8,:]:
 
 # Converting parameters to CGS units
 # EOS Pol0J
-m_Pol0J = M_Pol0J * 1.9884e33   # Mass (in g)
-r_Pol0J = R_Pol0J * 1.0e5       # Radius (in cm)
-mmax_Pol0J = Mmax_Pol0J * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_Pol0J = Rstat_Pol0J * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_Pol0J = Mstat_Pol0J * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_Pol0J = freq_Pol0J /(1223.47)  # Normalized angular frequency
-m0_Pol0J = M0_Pol0J * 1.9884e33     # Baryonic mass
-normJ_Pol0J = (c*J_Pol0J)/(G*m0_Pol0J**2)     # Normalized angular momentum
-a_Pol0J = (c*J_Pol0J)/(G*m_Pol0J**2)         # spin parameter
+m_Pol0J = M_Pol0J * 1.9884e33   
+r_Pol0J = R_Pol0J * 1.0e5       
+mmax_Pol0J = Mmax_Pol0J * 1.9884e33   
+rstat_Pol0J = Rstat_Pol0J * 1.0e5   
+mstat_Pol0J = Mstat_Pol0J * 1.9884e33   
+delta_Pol0J = freq_Pol0J /(1223.47) 
+m0_Pol0J = M0_Pol0J * 1.9884e33     
+normJ_Pol0J = (c*J_Pol0J)/(G*m0_Pol0J**2)    
+a_Pol0J = (c*J_Pol0J)/(G*m_Pol0J**2)         
 
 
-ec_Pol0nr = dataPol0nr[0,:]*10**15   # central energy density (in g/cm^3)
-M_Pol0nr = dataPol0nr[1,:]           # Total mass (in Msun)
-M0_Pol0nr = dataPol0nr[2,:]          # Baryonic mass (in Msun)
-Mstat_Pol0nr = dataPol0nr[3,:]       # Mass when the NS is not rotating (in Msun)
-R_Pol0nr = dataPol0nr[4,:]           # Radius (in km)
-Rratio_Pol0nr = dataPol0nr[5,:]      # Ratio rp/re
-Rstat_Pol0nr = dataPol0nr[6,:]       # Radius when the NS is not rotating (in km)
-freq_Pol0nr = dataPol0nr[7,:]        # Rotational frequency (in Hz)
-kfreq_Pol0nr = dataPol0nr[8,:]       # Kepler limit (in Hz)
-J_Pol0nr = dataPol0nr[9,:]          # Angular momentum (in cm^2 g/s)
-T_Pol0nr = dataPol0nr[10,:]          # Rotational kinetic energy (in g)
-W_Pol0nr = dataPol0nr[11,:]          # Gravitational binding energy (in g)
-#Rmax_Pol0nr = dataPol0nr[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_Pol0nr = dataPol0nr[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec_Pol0nr = dataPol0nr[0,:]*10**15   
+M_Pol0nr = dataPol0nr[1,:]           
+M0_Pol0nr = dataPol0nr[2,:]          
+Mstat_Pol0nr = dataPol0nr[3,:]       
+R_Pol0nr = dataPol0nr[4,:]           
+Rratio_Pol0nr = dataPol0nr[5,:]      
+Rstat_Pol0nr = dataPol0nr[6,:]       
+freq_Pol0nr = dataPol0nr[7,:]        
+kfreq_Pol0nr = dataPol0nr[8,:]       
+J_Pol0nr = dataPol0nr[9,:]          
+T_Pol0nr = dataPol0nr[10,:]          
+W_Pol0nr = dataPol0nr[11,:]          
+#Rmax_Pol0nr = dataPol0nr[13,:]       
+#Qmax_Pol0nr = dataPol0nr[14,:]       
 Vp_Pol0nr = dataPol0nr[12,:] 
 
 Mmax0=0;
@@ -647,33 +647,33 @@ for i in dataPol0nr[8,:]:
 
 # Converting parameters to CGS units
 # EOS Pol0nr
-m_Pol0nr = M_Pol0nr * 1.9884e33   # Mass (in g)
-r_Pol0nr = R_Pol0nr * 1.0e5       # Radius (in cm)
-mmax_Pol0nr = Mmax_Pol0nr * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_Pol0nr = Rstat_Pol0nr * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_Pol0nr = Mstat_Pol0nr * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_Pol0nr = freq_Pol0nr * (2*np.pi) * ((rstat_Pol0nr**3)/(G*mstat_Pol0nr))**(0.5)/((SlopK4*(Mstat_Pol0nr/Rstat_Pol0nr)**4+SlopK3*(Mstat_Pol0nr/Rstat_Pol0nr)**3+SlopK2*(Mstat_Pol0nr/Rstat_Pol0nr)**2+SlopK*Mstat_Pol0nr/Rstat_Pol0nr+InterK))   # Normalized angular frequency
-m0_Pol0nr = M0_Pol0nr * 1.9884e33     # Baryonic mass
-normJ_Pol0nr = (c*J_Pol0nr)/(G*m0_Pol0nr**2)     # Normalized angular momentum
-a_Pol0nr = (c*J_Pol0nr)/(G*m_Pol0nr**2)         # spin parameter
+m_Pol0nr = M_Pol0nr * 1.9884e33   
+r_Pol0nr = R_Pol0nr * 1.0e5       
+mmax_Pol0nr = Mmax_Pol0nr * 1.9884e33   
+rstat_Pol0nr = Rstat_Pol0nr * 1.0e5   
+mstat_Pol0nr = Mstat_Pol0nr * 1.9884e33   
+delta_Pol0nr = freq_Pol0nr * (2*np.pi) * ((rstat_Pol0nr**3)/(G*mstat_Pol0nr))**(0.5)/((SlopK4*(Mstat_Pol0nr/Rstat_Pol0nr)**4+SlopK3*(Mstat_Pol0nr/Rstat_Pol0nr)**3+SlopK2*(Mstat_Pol0nr/Rstat_Pol0nr)**2+SlopK*Mstat_Pol0nr/Rstat_Pol0nr+InterK))  
+m0_Pol0nr = M0_Pol0nr * 1.9884e33     
+normJ_Pol0nr = (c*J_Pol0nr)/(G*m0_Pol0nr**2)    
+a_Pol0nr = (c*J_Pol0nr)/(G*m_Pol0nr**2)         
 
 
 
 
-ec_Pol0K = dataPol0K[0,:]*10**15   # central energy density (in g/cm^3)
-M_Pol0K = dataPol0K[1,:]           # Total mass (in Msun)
-M0_Pol0K = dataPol0K[2,:]          # Baryonic mass (in Msun)
-Mstat_Pol0K = dataPol0K[3,:]       # Mass when the NS is not rotating (in Msun)
-R_Pol0K = dataPol0K[4,:]           # Radius (in km)
-Rratio_Pol0K = dataPol0K[5,:]      # Ratio rp/re
-Rstat_Pol0K = dataPol0K[6,:]       # Radius when the NS is not rotating (in km)
-freq_Pol0K = dataPol0K[7,:]        # Rotational frequency (in Hz)
-kfreq_Pol0K = dataPol0K[8,:]       # Kepler limit (in Hz)
-J_Pol0K = dataPol0K[9,:]          # Angular momentum (in cm^2 g/s)
-T_Pol0K = dataPol0K[10,:]          # Rotational kinetic energy (in g)
-W_Pol0K = dataPol0K[11,:]          # Gravitational binding energy (in g)
-#Rmax_Pol0K = dataPol0K[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_Pol0K = dataPol0K[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec_Pol0K = dataPol0K[0,:]*10**15   
+M_Pol0K = dataPol0K[1,:]           
+M0_Pol0K = dataPol0K[2,:]          
+Mstat_Pol0K = dataPol0K[3,:]       
+R_Pol0K = dataPol0K[4,:]           
+Rratio_Pol0K = dataPol0K[5,:]      
+Rstat_Pol0K = dataPol0K[6,:]       
+freq_Pol0K = dataPol0K[7,:]        
+kfreq_Pol0K = dataPol0K[8,:]       
+J_Pol0K = dataPol0K[9,:]          
+T_Pol0K = dataPol0K[10,:]          
+W_Pol0K = dataPol0K[11,:]          
+#Rmax_Pol0K = dataPol0K[13,:]       
+#Qmax_Pol0K = dataPol0K[14,:]       
 Vp_Pol0K = dataPol0K[12,:] 
 
 Mmax0=0;
@@ -711,34 +711,34 @@ for i in dataPol0K[8,:]:
 
 # Converting parameters to CGS units
 # EOS Pol0K
-m_Pol0K = M_Pol0K * 1.9884e33   # Mass (in g)
-r_Pol0K = R_Pol0K * 1.0e5       # Radius (in cm)
-mmax_Pol0K = Mmax_Pol0K * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_Pol0K = Rstat_Pol0K * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_Pol0K = Mstat_Pol0K * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_Pol0K = freq_Pol0K * (2*np.pi) * ((rstat_Pol0K**3)/(G*mstat_Pol0K))**(0.5)/((SlopK4*(Mstat_Pol0K/Rstat_Pol0K)**4+SlopK3*(Mstat_Pol0K/Rstat_Pol0K)**3+SlopK2*(Mstat_Pol0K/Rstat_Pol0K)**2+SlopK*Mstat_Pol0K/Rstat_Pol0K+InterK))  # Normalized angular frequency
-m0_Pol0K = M0_Pol0K * 1.9884e33     # Baryonic mass
-normJ_Pol0K = (c*J_Pol0K)/(G*m0_Pol0K**2)     # Normalized angular momentum
-a_Pol0K = (c*J_Pol0K)/(G*m_Pol0K**2)         # spin parameter
+m_Pol0K = M_Pol0K * 1.9884e33   
+r_Pol0K = R_Pol0K * 1.0e5       
+mmax_Pol0K = Mmax_Pol0K * 1.9884e33   
+rstat_Pol0K = Rstat_Pol0K * 1.0e5   
+mstat_Pol0K = Mstat_Pol0K * 1.9884e33   
+delta_Pol0K = freq_Pol0K * (2*np.pi) * ((rstat_Pol0K**3)/(G*mstat_Pol0K))**(0.5)/((SlopK4*(Mstat_Pol0K/Rstat_Pol0K)**4+SlopK3*(Mstat_Pol0K/Rstat_Pol0K)**3+SlopK2*(Mstat_Pol0K/Rstat_Pol0K)**2+SlopK*Mstat_Pol0K/Rstat_Pol0K+InterK)) 
+m0_Pol0K = M0_Pol0K * 1.9884e33     
+normJ_Pol0K = (c*J_Pol0K)/(G*m0_Pol0K**2)    
+a_Pol0K = (c*J_Pol0K)/(G*m_Pol0K**2)         
 
 
 
 
 
-ec_Pol0ins = dataPol0ins[0,:]*10**15   # central energy density (in g/cm^3)
-M_Pol0ins = dataPol0ins[1,:]           # Total mass (in Msun)
-M0_Pol0ins = dataPol0ins[2,:]          # Baryonic mass (in Msun)
-Mstat_Pol0ins = dataPol0ins[3,:]       # Mass when the NS is not rotating (in Msun)
-R_Pol0ins = dataPol0ins[4,:]           # Radius (in km)
-Rratio_Pol0ins = dataPol0ins[5,:]      # Ratio rp/re
-Rstat_Pol0ins = dataPol0ins[6,:]       # Radius when the NS is not rotating (in km)
-freq_Pol0ins = dataPol0ins[7,:]        # Rotational frequency (in Hz)
-kfreq_Pol0ins = dataPol0ins[8,:]       # Kepler limit (in Hz)
-J_Pol0ins = dataPol0ins[9,:]          # Angular momentum (in cm^2 g/s)
-T_Pol0ins = dataPol0ins[10,:]          # Rotational kinetic energy (in g)
-W_Pol0ins = dataPol0ins[11,:]          # Gravitational binding energy (in g)
-#Rmax_Pol0ins = dataPol0ins[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_Pol0ins = dataPol0ins[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec_Pol0ins = dataPol0ins[0,:]*10**15   
+M_Pol0ins = dataPol0ins[1,:]           
+M0_Pol0ins = dataPol0ins[2,:]          
+Mstat_Pol0ins = dataPol0ins[3,:]       
+R_Pol0ins = dataPol0ins[4,:]           
+Rratio_Pol0ins = dataPol0ins[5,:]      
+Rstat_Pol0ins = dataPol0ins[6,:]       
+freq_Pol0ins = dataPol0ins[7,:]        
+kfreq_Pol0ins = dataPol0ins[8,:]       
+J_Pol0ins = dataPol0ins[9,:]          
+T_Pol0ins = dataPol0ins[10,:]          
+W_Pol0ins = dataPol0ins[11,:]          
+#Rmax_Pol0ins = dataPol0ins[13,:]       
+#Qmax_Pol0ins = dataPol0ins[14,:]       
 Vp_Pol0ins = dataPol0ins[12,:] 
 
 Mmax0=0;
@@ -776,15 +776,15 @@ for i in dataPol0ins[8,:]:
 
 # Converting parameters to CGS units
 # EOS Pol0ins
-m_Pol0ins = M_Pol0ins * 1.9884e33   # Mass (in g)
-r_Pol0ins = R_Pol0ins * 1.0e5       # Radius (in cm)
-mmax_Pol0ins = Mmax_Pol0ins * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_Pol0ins = Rstat_Pol0ins * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_Pol0ins = Mstat_Pol0ins * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_Pol0ins = freq_Pol0ins * (2*np.pi) * ((rstat_Pol0ins**3)/(G*mstat_Pol0ins))**(0.5)/((SlopK4*(Mstat_Pol0ins/Rstat_Pol0ins)**4+SlopK3*(Mstat_Pol0ins/Rstat_Pol0ins)**3+SlopK2*(Mstat_Pol0ins/Rstat_Pol0ins)**2+SlopK*Mstat_Pol0ins/Rstat_Pol0ins+InterK))   # Normalized angular frequency
-m0_Pol0ins = M0_Pol0ins * 1.9884e33     # Baryonic mass
-normJ_Pol0ins = (c*J_Pol0ins)/(G*m0_Pol0ins**2)     # Normalized angular momentum
-a_Pol0ins = (c*J_Pol0ins)/(G*m_Pol0ins**2)         # spin parameter
+m_Pol0ins = M_Pol0ins * 1.9884e33   
+r_Pol0ins = R_Pol0ins * 1.0e5       
+mmax_Pol0ins = Mmax_Pol0ins * 1.9884e33   
+rstat_Pol0ins = Rstat_Pol0ins * 1.0e5   
+mstat_Pol0ins = Mstat_Pol0ins * 1.9884e33   
+delta_Pol0ins = freq_Pol0ins * (2*np.pi) * ((rstat_Pol0ins**3)/(G*mstat_Pol0ins))**(0.5)/((SlopK4*(Mstat_Pol0ins/Rstat_Pol0ins)**4+SlopK3*(Mstat_Pol0ins/Rstat_Pol0ins)**3+SlopK2*(Mstat_Pol0ins/Rstat_Pol0ins)**2+SlopK*Mstat_Pol0ins/Rstat_Pol0ins+InterK))  
+m0_Pol0ins = M0_Pol0ins * 1.9884e33     
+normJ_Pol0ins = (c*J_Pol0ins)/(G*m0_Pol0ins**2)    
+a_Pol0ins = (c*J_Pol0ins)/(G*m_Pol0ins**2)         
 
 
 
@@ -805,14 +805,14 @@ RratioS_Pol0_rho1 = dataPol0rho1[12,:]
 
 # Converting parameters to CGS units
 # EOS Pol0_rho1
-m_Pol0_rho1 = M_Pol0_rho1 * 1.9884e33   # Mass (in g)
-r_Pol0_rho1 = R_Pol0_rho1 * 1.0e5       # Radius (in cm)
-rstat_Pol0_rho1 = Rstat_Pol0_rho1 * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_Pol0_rho1 = Mstat_Pol0_rho1 * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_Pol0_rho1 = freq_Pol0_rho1 * (2*np.pi) * ((rstat_Pol0_rho1**3)/(G*mstat_Pol0_rho1))**(0.5)/((SlopK4*(Mstat_Pol0_rho1/Rstat_Pol0_rho1)**4+SlopK3*(Mstat_Pol0_rho1/Rstat_Pol0_rho1)**3+SlopK2*(Mstat_Pol0_rho1/Rstat_Pol0_rho1)**2+SlopK*Mstat_Pol0_rho1/Rstat_Pol0_rho1+InterK))   # Normalized angular frequency
-m0_Pol0_rho1 = M0_Pol0_rho1 * 1.9884e33     # Baryonic mass
-normJ_Pol0_rho1 = (c*J_Pol0_rho1)/(G*m0_Pol0_rho1**2)     # Normalized angular momentum
-a_Pol0_rho1 = (c*J_Pol0_rho1)/(G*m_Pol0_rho1**2)         # spin parameter
+m_Pol0_rho1 = M_Pol0_rho1 * 1.9884e33   
+r_Pol0_rho1 = R_Pol0_rho1 * 1.0e5       
+rstat_Pol0_rho1 = Rstat_Pol0_rho1 * 1.0e5   
+mstat_Pol0_rho1 = Mstat_Pol0_rho1 * 1.9884e33   
+delta_Pol0_rho1 = freq_Pol0_rho1 * (2*np.pi) * ((rstat_Pol0_rho1**3)/(G*mstat_Pol0_rho1))**(0.5)/((SlopK4*(Mstat_Pol0_rho1/Rstat_Pol0_rho1)**4+SlopK3*(Mstat_Pol0_rho1/Rstat_Pol0_rho1)**3+SlopK2*(Mstat_Pol0_rho1/Rstat_Pol0_rho1)**2+SlopK*Mstat_Pol0_rho1/Rstat_Pol0_rho1+InterK))  
+m0_Pol0_rho1 = M0_Pol0_rho1 * 1.9884e33     
+normJ_Pol0_rho1 = (c*J_Pol0_rho1)/(G*m0_Pol0_rho1**2)    
+a_Pol0_rho1 = (c*J_Pol0_rho1)/(G*m_Pol0_rho1**2)         
 
 ec_Pol0_rho2 = dataPol0rho2[0,:]*10**15 
 M_Pol0_rho2 = dataPol0rho2[1,:]
@@ -830,16 +830,16 @@ RratioS_Pol0_rho2 = dataPol0rho2[12,:]
 
 # Converting parameters to CGS units
 # EOS Pol0_rho2
-m_Pol0_rho2 = M_Pol0_rho2 * 1.9884e33   # Mass (in g)
-r_Pol0_rho2 = R_Pol0_rho2 * 1.0e5       # Radius (in cm)
-rstat_Pol0_rho2 = Rstat_Pol0_rho2 * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_Pol0_rho2 = Mstat_Pol0_rho2 * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_Pol0_rho2 = freq_Pol0_rho2 * (2*np.pi) * ((rstat_Pol0_rho2**3)/(G*mstat_Pol0_rho2))**(0.5)/((SlopK4*(Mstat_Pol0_rho2/Rstat_Pol0_rho2)**4+SlopK3*(Mstat_Pol0_rho2/Rstat_Pol0_rho2)**3+SlopK2*(Mstat_Pol0_rho2/Rstat_Pol0_rho2)**2+SlopK*Mstat_Pol0_rho2/Rstat_Pol0_rho2+InterK))   # Normalized angular frequency
-m0_Pol0_rho2 = M0_Pol0_rho2 * 1.9884e33     # Baryonic mass
-normJ_Pol0_rho2 = (c*J_Pol0_rho2)/(G*m0_Pol0_rho2**2)     # Normalized angular momentum
-a_Pol0_rho2 = (c*J_Pol0_rho2)/(G*m_Pol0_rho2**2)         # spin parameter
+m_Pol0_rho2 = M_Pol0_rho2 * 1.9884e33   
+r_Pol0_rho2 = R_Pol0_rho2 * 1.0e5       
+rstat_Pol0_rho2 = Rstat_Pol0_rho2 * 1.0e5   
+mstat_Pol0_rho2 = Mstat_Pol0_rho2 * 1.9884e33   
+delta_Pol0_rho2 = freq_Pol0_rho2 * (2*np.pi) * ((rstat_Pol0_rho2**3)/(G*mstat_Pol0_rho2))**(0.5)/((SlopK4*(Mstat_Pol0_rho2/Rstat_Pol0_rho2)**4+SlopK3*(Mstat_Pol0_rho2/Rstat_Pol0_rho2)**3+SlopK2*(Mstat_Pol0_rho2/Rstat_Pol0_rho2)**2+SlopK*Mstat_Pol0_rho2/Rstat_Pol0_rho2+InterK))  
+m0_Pol0_rho2 = M0_Pol0_rho2 * 1.9884e33     
+normJ_Pol0_rho2 = (c*J_Pol0_rho2)/(G*m0_Pol0_rho2**2)    
+a_Pol0_rho2 = (c*J_Pol0_rho2)/(G*m_Pol0_rho2**2)         
 
-
+'''
 ec_Pol = dataPol[0,:]*10**15 
 M_Pol = dataPol[1,:]
 M0_Pol = dataPol[2,:]
@@ -888,15 +888,15 @@ for i in dataPol[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_Pol = M_Pol * 1.9884e33   # Mass (in g)
-r_Pol = R_Pol * 1.0e5       # Radius (in cm)
-mmax_Pol = Mmax_Pol * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_Pol = Rstat_Pol * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_Pol = Mstat_Pol * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_Pol = freq_Pol * (2*np.pi) * ((rstat_Pol**3)/(G*mstat_Pol))**(0.5)#**0.5   # Normalized angular frequency
-m0_Pol = M0_Pol * 1.9884e33     # Baryonic mass
-normJ_Pol = (c*J_Pol)/(G*m0_Pol**2)     # Normalized angular momentum
-a_Pol = (c*J_Pol)/(G*m_Pol**2)         # spin parameter
+m_Pol = M_Pol * 1.9884e33   
+r_Pol = R_Pol * 1.0e5       
+mmax_Pol = Mmax_Pol * 1.9884e33   
+rstat_Pol = Rstat_Pol * 1.0e5   
+mstat_Pol = Mstat_Pol * 1.9884e33   
+delta_Pol = freq_Pol * (2*np.pi) * ((rstat_Pol**3)/(G*mstat_Pol))**(0.5)#**0.5  
+m0_Pol = M0_Pol * 1.9884e33     
+normJ_Pol = (c*J_Pol)/(G*m0_Pol**2)    
+a_Pol = (c*J_Pol)/(G*m_Pol**2)         
 
 
 NorKP=np.zeros(len(delta_Pol))
@@ -919,7 +919,7 @@ for i in range(len(delta_Pol)):
     countk=countk+1
 
 
-delta_Pol = freq_Pol * (2*np.pi) * ((rstat_Pol**3)/(G*mstat_Pol))**(0.5)/((SlopK4*(Mstat_Pol/Rstat_Pol)**4+SlopK3*(Mstat_Pol/Rstat_Pol)**3+SlopK2*(Mstat_Pol/Rstat_Pol)**2+SlopK*Mstat_Pol/Rstat_Pol+InterK))#**0.5   # Normalized angular frequency
+delta_Pol = freq_Pol * (2*np.pi) * ((rstat_Pol**3)/(G*mstat_Pol))**(0.5)/((SlopK4*(Mstat_Pol/Rstat_Pol)**4+SlopK3*(Mstat_Pol/Rstat_Pol)**3+SlopK2*(Mstat_Pol/Rstat_Pol)**2+SlopK*Mstat_Pol/Rstat_Pol+InterK))#**0.5  
 
 
 ec_Gr = dataGr[0,:]*10**15 
@@ -972,15 +972,15 @@ for i in dataGr[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_Gr = M_Gr * 1.9884e33   # Mass (in g)
-r_Gr = R_Gr * 1.0e5       # Radius (in cm)
-mmax_Gr = Mmax_Gr * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_Gr = Rstat_Gr * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_Gr = Mstat_Gr * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_Gr = freq_Gr * (2*np.pi) * ((rstat_Gr**3)/(G*mstat_Gr))**(0.5)#**0.5   # Normalized angular frequency
-m0_Gr = M0_Gr * 1.9884e33     # Baryonic mass
-normJ_Gr = (c*J_Gr)/(G*m0_Gr**2)     # Normalized angular momentum
-a_Gr = (c*J_Gr)/(G*m_Gr**2)         # spin parameter
+m_Gr = M_Gr * 1.9884e33   
+r_Gr = R_Gr * 1.0e5       
+mmax_Gr = Mmax_Gr * 1.9884e33   
+rstat_Gr = Rstat_Gr * 1.0e5   
+mstat_Gr = Mstat_Gr * 1.9884e33   
+delta_Gr = freq_Gr * (2*np.pi) * ((rstat_Gr**3)/(G*mstat_Gr))**(0.5)#**0.5  
+m0_Gr = M0_Gr * 1.9884e33     
+normJ_Gr = (c*J_Gr)/(G*m0_Gr**2)    
+a_Gr = (c*J_Gr)/(G*m_Gr**2)         
 
 
 
@@ -1004,27 +1004,27 @@ for i in range(len(delta_Gr)):
     countk=countk+1
 
 
-delta_Gr = freq_Gr * (2*np.pi) * ((rstat_Gr**3)/(G*mstat_Gr))**(0.5)/((SlopK4*(Mstat_Gr/Rstat_Gr)**4+SlopK3*(Mstat_Gr/Rstat_Gr)**3+SlopK2*(Mstat_Gr/Rstat_Gr)**2+SlopK*Mstat_Gr/Rstat_Gr+InterK))#**0.5   # Normalized angular frequency
+delta_Gr = freq_Gr * (2*np.pi) * ((rstat_Gr**3)/(G*mstat_Gr))**(0.5)/((SlopK4*(Mstat_Gr/Rstat_Gr)**4+SlopK3*(Mstat_Gr/Rstat_Gr)**3+SlopK2*(Mstat_Gr/Rstat_Gr)**2+SlopK*Mstat_Gr/Rstat_Gr+InterK))#**0.5  
 
 
 
 
 
-ec_QHCD = dataQHCD[0,:]*10**15   # central energy density (in g/cm^3)
-M_QHCD = dataQHCD[1,:]           # Total mass (in Msun)
-M0_QHCD = dataQHCD[2,:]          # Baryonic mass (in Msun)
-Mstat_QHCD = dataQHCD[3,:]       # Mass when the NS is not rotating (in Msun)
-#Mmax_QHCD = dataQHCD[4,:]        # Maximum mass for a given EOS (in Msun)
-R_QHCD = dataQHCD[5,:]           # Radius (in km)
-Rratio_QHCD = dataQHCD[6,:]      # Ratio rp/re
-Rstat_QHCD = dataQHCD[7,:]       # Radius when the NS is not rotating (in km)
-freq_QHCD = dataQHCD[8,:]        # Rotational frequency (in Hz)
-kfreq_QHCD = dataQHCD[9,:]       # Kepler limit (in Hz)
-J_QHCD = dataQHCD[10,:]          # Angular momentum (in cm^2 g/s)
-T_QHCD = dataQHCD[11,:]          # Rotational kinetic energy (in g)
-W_QHCD = dataQHCD[12,:]          # Gravitational binding energy (in g)
-#Rmax_QHCD = dataQHCD[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_QHCD = dataQHCD[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec_QHCD = dataQHCD[0,:]*10**15   
+M_QHCD = dataQHCD[1,:]           
+M0_QHCD = dataQHCD[2,:]          
+Mstat_QHCD = dataQHCD[3,:]       
+#Mmax_QHCD = dataQHCD[4,:]        
+R_QHCD = dataQHCD[5,:]           
+Rratio_QHCD = dataQHCD[6,:]      
+Rstat_QHCD = dataQHCD[7,:]       
+freq_QHCD = dataQHCD[8,:]        
+kfreq_QHCD = dataQHCD[9,:]       
+J_QHCD = dataQHCD[10,:]          
+T_QHCD = dataQHCD[11,:]          
+W_QHCD = dataQHCD[12,:]          
+#Rmax_QHCD = dataQHCD[13,:]       
+#Qmax_QHCD = dataQHCD[14,:]       
 
 Mmax0=0;
 for i in dataQHCD[1,:]:
@@ -1061,15 +1061,15 @@ for i in dataQHCD[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_QHCD = M_QHCD * 1.9884e33   # Mass (in g)
-r_QHCD = R_QHCD * 1.0e5       # Radius (in cm)
-mmax_QHCD = Mmax_QHCD * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_QHCD = Rstat_QHCD * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_QHCD = Mstat_QHCD * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_QHCD = freq_QHCD * (2*np.pi) * ((rstat_QHCD**3)/(G*mstat_QHCD))**(0.5)/((SlopK4*(Mstat_QHCD/Rstat_QHCD)**4+SlopK3*(Mstat_QHCD/Rstat_QHCD)**3+SlopK2*(Mstat_QHCD/Rstat_QHCD)**2+SlopK*Mstat_QHCD/Rstat_QHCD+InterK))#**0.5   # Normalized angular frequency
-m0_QHCD = M0_QHCD * 1.9884e33     # Baryonic mass
-normJ_QHCD = (c*J_QHCD)/(G*m0_QHCD**2)     # Normalized angular momentum
-a_QHCD = (c*J_QHCD)/(G*m_QHCD**2)         # spin parameter
+m_QHCD = M_QHCD * 1.9884e33   
+r_QHCD = R_QHCD * 1.0e5       
+mmax_QHCD = Mmax_QHCD * 1.9884e33   
+rstat_QHCD = Rstat_QHCD * 1.0e5   
+mstat_QHCD = Mstat_QHCD * 1.9884e33   
+delta_QHCD = freq_QHCD * (2*np.pi) * ((rstat_QHCD**3)/(G*mstat_QHCD))**(0.5)/((SlopK4*(Mstat_QHCD/Rstat_QHCD)**4+SlopK3*(Mstat_QHCD/Rstat_QHCD)**3+SlopK2*(Mstat_QHCD/Rstat_QHCD)**2+SlopK*Mstat_QHCD/Rstat_QHCD+InterK))#**0.5  
+m0_QHCD = M0_QHCD * 1.9884e33     
+normJ_QHCD = (c*J_QHCD)/(G*m0_QHCD**2)    
+a_QHCD = (c*J_QHCD)/(G*m_QHCD**2)         
 
 
 
@@ -1077,21 +1077,21 @@ a_QHCD = (c*J_QHCD)/(G*m_QHCD**2)         # spin parameter
 
 # Extracting columns from the data files of each EOS
 # Greif EOS
-ec_ABPR2 = dataABPR2[0,:]*10**15   # central energy density (in g/cm^3)
-M_ABPR2 = dataABPR2[1,:]           # Total mass (in Msun)
-M0_ABPR2 = dataABPR2[2,:]          # Baryonic mass (in Msun)
-Mstat_ABPR2 = dataABPR2[3,:]       # Mass when the NS is not rotating (in Msun)
-#Mmax_ABPR2 = dataABPR2[4,:]        # Maximum mass for a given EOS (in Msun)
-R_ABPR2 = dataABPR2[5,:]           # Radius (in km)
-Rratio_ABPR2 = dataABPR2[6,:]      # Ratio rp/re
-Rstat_ABPR2 = dataABPR2[7,:]       # Radius when the NS is not rotating (in km)
-freq_ABPR2 = dataABPR2[8,:]        # Rotational frequency (in Hz)
-kfreq_ABPR2 = dataABPR2[9,:]       # Kepler limit (in Hz)
-J_ABPR2 = dataABPR2[10,:]          # Angular momentum (in cm^2 g/s)
-T_ABPR2 = dataABPR2[11,:]          # Rotational kinetic energy (in g)
-W_ABPR2 = dataABPR2[12,:]          # Gravitational binding energy (in g)
-#Rmax_ABPR2 = dataABPR2[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_ABPR2 = dataABPR2[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec_ABPR2 = dataABPR2[0,:]*10**15   
+M_ABPR2 = dataABPR2[1,:]           
+M0_ABPR2 = dataABPR2[2,:]          
+Mstat_ABPR2 = dataABPR2[3,:]       
+#Mmax_ABPR2 = dataABPR2[4,:]        
+R_ABPR2 = dataABPR2[5,:]           
+Rratio_ABPR2 = dataABPR2[6,:]      
+Rstat_ABPR2 = dataABPR2[7,:]       
+freq_ABPR2 = dataABPR2[8,:]        
+kfreq_ABPR2 = dataABPR2[9,:]       
+J_ABPR2 = dataABPR2[10,:]          
+T_ABPR2 = dataABPR2[11,:]          
+W_ABPR2 = dataABPR2[12,:]          
+#Rmax_ABPR2 = dataABPR2[13,:]       
+#Qmax_ABPR2 = dataABPR2[14,:]       
 
 Mmax0=0;
 for i in dataABPR2[1,:]:
@@ -1128,35 +1128,35 @@ for i in dataABPR2[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_ABPR2 = M_ABPR2 * 1.9884e33   # Mass (in g)
-r_ABPR2 = R_ABPR2 * 1.0e5       # Radius (in cm)
-mmax_ABPR2 = Mmax_ABPR2 * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_ABPR2 = Rstat_ABPR2 * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_ABPR2 = Mstat_ABPR2 * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_ABPR2 = freq_ABPR2 * (2*np.pi) * ((rstat_ABPR2**3)/(G*mstat_ABPR2))**(0.5)/((SlopK4*(Mstat_ABPR2/Rstat_ABPR2)**4+SlopK3*(Mstat_ABPR2/Rstat_ABPR2)**3+SlopK2*(Mstat_ABPR2/Rstat_ABPR2)**2+SlopK*Mstat_ABPR2/Rstat_ABPR2+InterK))   # Normalized angular frequency
-m0_ABPR2 = M0_ABPR2 * 1.9884e33     # Baryonic mass
-normJ_ABPR2 = (c*J_ABPR2)/(G*m0_ABPR2**2)     # Normalized angular momentum
-a_ABPR2 = (c*J_ABPR2)/(G*m_ABPR2**2)         # spin parameter
+m_ABPR2 = M_ABPR2 * 1.9884e33   
+r_ABPR2 = R_ABPR2 * 1.0e5       
+mmax_ABPR2 = Mmax_ABPR2 * 1.9884e33   
+rstat_ABPR2 = Rstat_ABPR2 * 1.0e5   
+mstat_ABPR2 = Mstat_ABPR2 * 1.9884e33   
+delta_ABPR2 = freq_ABPR2 * (2*np.pi) * ((rstat_ABPR2**3)/(G*mstat_ABPR2))**(0.5)/((SlopK4*(Mstat_ABPR2/Rstat_ABPR2)**4+SlopK3*(Mstat_ABPR2/Rstat_ABPR2)**3+SlopK2*(Mstat_ABPR2/Rstat_ABPR2)**2+SlopK*Mstat_ABPR2/Rstat_ABPR2+InterK))  
+m0_ABPR2 = M0_ABPR2 * 1.9884e33     
+normJ_ABPR2 = (c*J_ABPR2)/(G*m0_ABPR2**2)    
+a_ABPR2 = (c*J_ABPR2)/(G*m_ABPR2**2)         
 
 
 
 # Extracting columns from the data files of each EOS
 # Greif EOS
-ec_HLPS2 = dataHLPS2[0,:]*10**15   # central energy density (in g/cm^3)
-M_HLPS2 = dataHLPS2[1,:]           # Total mass (in Msun)
-M0_HLPS2 = dataHLPS2[2,:]          # Baryonic mass (in Msun)
-Mstat_HLPS2 = dataHLPS2[3,:]       # Mass when the NS is not rotating (in Msun)
-#Mmax_HLPS2 = dataHLPS2[4,:]        # Maximum mass for a given EOS (in Msun)
-R_HLPS2 = dataHLPS2[5,:]           # Radius (in km)
-Rratio_HLPS2 = dataHLPS2[6,:]      # Ratio rp/re
-Rstat_HLPS2 = dataHLPS2[7,:]       # Radius when the NS is not rotating (in km)
-freq_HLPS2 = dataHLPS2[8,:]        # Rotational frequency (in Hz)
-kfreq_HLPS2 = dataHLPS2[9,:]       # Kepler limit (in Hz)
-J_HLPS2 = dataHLPS2[10,:]          # Angular momentum (in cm^2 g/s)
-T_HLPS2 = dataHLPS2[11,:]          # Rotational kinetic energy (in g)
-W_HLPS2 = dataHLPS2[12,:]          # Gravitational binding energy (in g)
-#Rmax_HLPS2 = dataHLPS2[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_HLPS2 = dataHLPS2[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec_HLPS2 = dataHLPS2[0,:]*10**15   
+M_HLPS2 = dataHLPS2[1,:]           
+M0_HLPS2 = dataHLPS2[2,:]          
+Mstat_HLPS2 = dataHLPS2[3,:]       
+#Mmax_HLPS2 = dataHLPS2[4,:]        
+R_HLPS2 = dataHLPS2[5,:]           
+Rratio_HLPS2 = dataHLPS2[6,:]      
+Rstat_HLPS2 = dataHLPS2[7,:]       
+freq_HLPS2 = dataHLPS2[8,:]        
+kfreq_HLPS2 = dataHLPS2[9,:]       
+J_HLPS2 = dataHLPS2[10,:]          
+T_HLPS2 = dataHLPS2[11,:]          
+W_HLPS2 = dataHLPS2[12,:]          
+#Rmax_HLPS2 = dataHLPS2[13,:]       
+#Qmax_HLPS2 = dataHLPS2[14,:]       
 
 Mmax0=0;
 for i in dataHLPS2[1,:]:
@@ -1193,34 +1193,35 @@ for i in dataHLPS2[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_HLPS2 = M_HLPS2 * 1.9884e33   # Mass (in g)
-r_HLPS2 = R_HLPS2 * 1.0e5       # Radius (in cm)
-mmax_HLPS2 = Mmax_HLPS2 * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_HLPS2 = Rstat_HLPS2 * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_HLPS2 = Mstat_HLPS2 * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_HLPS2 = freq_HLPS2 * (2*np.pi) * ((rstat_HLPS2**3)/(G*mstat_HLPS2))**(0.5)/((SlopK4*(Mstat_HLPS2/Rstat_HLPS2)**4+SlopK3*(Mstat_HLPS2/Rstat_HLPS2)**3+SlopK2*(Mstat_HLPS2/Rstat_HLPS2)**2+SlopK*Mstat_HLPS2/Rstat_HLPS2+InterK))   # Normalized angular frequency
-m0_HLPS2 = M0_HLPS2 * 1.9884e33     # Baryonic mass
-normJ_HLPS2 = (c*J_HLPS2)/(G*m0_HLPS2**2)     # Normalized angular momentum
-a_HLPS2 = (c*J_HLPS2)/(G*m_HLPS2**2)         # spin parameter
+m_HLPS2 = M_HLPS2 * 1.9884e33   
+r_HLPS2 = R_HLPS2 * 1.0e5       
+mmax_HLPS2 = Mmax_HLPS2 * 1.9884e33   
+rstat_HLPS2 = Rstat_HLPS2 * 1.0e5   
+mstat_HLPS2 = Mstat_HLPS2 * 1.9884e33   
+delta_HLPS2 = freq_HLPS2 * (2*np.pi) * ((rstat_HLPS2**3)/(G*mstat_HLPS2))**(0.5)/((SlopK4*(Mstat_HLPS2/Rstat_HLPS2)**4+SlopK3*(Mstat_HLPS2/Rstat_HLPS2)**3+SlopK2*(Mstat_HLPS2/Rstat_HLPS2)**2+SlopK*Mstat_HLPS2/Rstat_HLPS2+InterK))  
+m0_HLPS2 = M0_HLPS2 * 1.9884e33     
+normJ_HLPS2 = (c*J_HLPS2)/(G*m0_HLPS2**2)    
+a_HLPS2 = (c*J_HLPS2)/(G*m_HLPS2**2)         
 
 
 # Extracting columns from the data files of each EOS
 # Greif EOS
-ec_HLPS3 = dataHLPS3[0,:]*10**15   # central energy density (in g/cm^3)
-M_HLPS3 = dataHLPS3[1,:]           # Total mass (in Msun)
-M0_HLPS3 = dataHLPS3[2,:]          # Baryonic mass (in Msun)
-Mstat_HLPS3 = dataHLPS3[3,:]       # Mass when the NS is not rotating (in Msun)
-#Mmax_HLPS3 = dataHLPS3[4,:]        # Maximum mass for a given EOS (in Msun)
-R_HLPS3 = dataHLPS3[5,:]           # Radius (in km)
-Rratio_HLPS3 = dataHLPS3[6,:]      # Ratio rp/re
-Rstat_HLPS3 = dataHLPS3[7,:]       # Radius when the NS is not rotating (in km)
-freq_HLPS3 = dataHLPS3[8,:]        # Rotational frequency (in Hz)
-kfreq_HLPS3 = dataHLPS3[9,:]       # Kepler limit (in Hz)
-J_HLPS3 = dataHLPS3[10,:]          # Angular momentum (in cm^2 g/s)
-T_HLPS3 = dataHLPS3[11,:]          # Rotational kinetic energy (in g)
-W_HLPS3 = dataHLPS3[12,:]          # Gravitational binding energy (in g)
-#Rmax_HLPS3 = dataHLPS3[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_HLPS3 = dataHLPS3[14,:]       # MaxMass / MaxRadius of the non rotating star
+'''
+ec_HLPS3 = dataHLPS3[0,:]*10**15   
+M_HLPS3 = dataHLPS3[1,:]           
+M0_HLPS3 = dataHLPS3[2,:]          
+Mstat_HLPS3 = dataHLPS3[3,:]       
+#Mmax_HLPS3 = dataHLPS3[4,:]        
+R_HLPS3 = dataHLPS3[5,:]           
+Rratio_HLPS3 = dataHLPS3[6,:]      
+Rstat_HLPS3 = dataHLPS3[7,:]       
+freq_HLPS3 = dataHLPS3[8,:]        
+kfreq_HLPS3 = dataHLPS3[9,:]       
+J_HLPS3 = dataHLPS3[10,:]          
+T_HLPS3 = dataHLPS3[11,:]          
+W_HLPS3 = dataHLPS3[12,:]          
+#Rmax_HLPS3 = dataHLPS3[13,:]       
+#Qmax_HLPS3 = dataHLPS3[14,:]       
 
 Mmax0=0;
 for i in dataHLPS3[1,:]:
@@ -1257,35 +1258,35 @@ for i in dataHLPS3[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_HLPS3 = M_HLPS3 * 1.9884e33   # Mass (in g)
-r_HLPS3 = R_HLPS3 * 1.0e5       # Radius (in cm)
-mmax_HLPS3 = Mmax_HLPS3 * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_HLPS3 = Rstat_HLPS3 * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_HLPS3 = Mstat_HLPS3 * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_HLPS3 = freq_HLPS3 * (2*np.pi) * ((rstat_HLPS3**3)/(G*mstat_HLPS3))**(0.5)/((SlopK4*(Mstat_HLPS3/Rstat_HLPS3)**4+SlopK3*(Mstat_HLPS3/Rstat_HLPS3)**3+SlopK2*(Mstat_HLPS3/Rstat_HLPS3)**2+SlopK*Mstat_HLPS3/Rstat_HLPS3+InterK))    # Normalized angular frequency
-m0_HLPS3 = M0_HLPS3 * 1.9884e33     # Baryonic mass
-normJ_HLPS3 = (c*J_HLPS3)/(G*m0_HLPS3**2)     # Normalized angular momentum
-a_HLPS3 = (c*J_HLPS3)/(G*m_HLPS3**2)         # spin parameter
-
+m_HLPS3 = M_HLPS3 * 1.9884e33   
+r_HLPS3 = R_HLPS3 * 1.0e5       
+mmax_HLPS3 = Mmax_HLPS3 * 1.9884e33   
+rstat_HLPS3 = Rstat_HLPS3 * 1.0e5   
+mstat_HLPS3 = Mstat_HLPS3 * 1.9884e33   
+delta_HLPS3 = freq_HLPS3 * (2*np.pi) * ((rstat_HLPS3**3)/(G*mstat_HLPS3))**(0.5)/((SlopK4*(Mstat_HLPS3/Rstat_HLPS3)**4+SlopK3*(Mstat_HLPS3/Rstat_HLPS3)**3+SlopK2*(Mstat_HLPS3/Rstat_HLPS3)**2+SlopK*Mstat_HLPS3/Rstat_HLPS3+InterK))   
+m0_HLPS3 = M0_HLPS3 * 1.9884e33     
+normJ_HLPS3 = (c*J_HLPS3)/(G*m0_HLPS3**2)    
+a_HLPS3 = (c*J_HLPS3)/(G*m_HLPS3**2)         
+'''
 
 
 # Extracting columns from the data files of each EOS
 # Greif EOS
-ec_L = dataL[0,:]*10**15   # central energy density (in g/cm^3)
-M_L = dataL[1,:]           # Total mass (in Msun)
-M0_L = dataL[2,:]          # Baryonic mass (in Msun)
-Mstat_L = dataL[3,:]       # Mass when the NS is not rotating (in Msun)
-#Mmax_L = dataL[4,:]        # Maximum mass for a given EOS (in Msun)
-R_L = dataL[5,:]           # Radius (in km)
-Rratio_L = dataL[6,:]      # Ratio rp/re
-Rstat_L = dataL[7,:]       # Radius when the NS is not rotating (in km)
-freq_L = dataL[8,:]        # Rotational frequency (in Hz)
-kfreq_L = dataL[9,:]       # Kepler limit (in Hz)
-J_L = dataL[10,:]          # Angular momentum (in cm^2 g/s)
-T_L = dataL[11,:]          # Rotational kinetic energy (in g)
-W_L = dataL[12,:]          # Gravitational binding energy (in g)
-#Rmax_L = dataL[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_L = dataL[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec_L = dataL[0,:]*10**15   
+M_L = dataL[1,:]           
+M0_L = dataL[2,:]          
+Mstat_L = dataL[3,:]       
+#Mmax_L = dataL[4,:]        
+R_L = dataL[5,:]           
+Rratio_L = dataL[6,:]      
+Rstat_L = dataL[7,:]       
+freq_L = dataL[8,:]        
+kfreq_L = dataL[9,:]       
+J_L = dataL[10,:]          
+T_L = dataL[11,:]          
+W_L = dataL[12,:]          
+#Rmax_L = dataL[13,:]       
+#Qmax_L = dataL[14,:]       
 
 Mmax0=0;
 for i in dataL[1,:]:
@@ -1322,36 +1323,36 @@ for i in dataL[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_L = M_L * 1.9884e33   # Mass (in g)
-r_L = R_L * 1.0e5       # Radius (in cm)
-mmax_L = Mmax_L * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_L = Rstat_L * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_L = Mstat_L * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_L = freq_L * (2*np.pi) * ((rstat_L**3)/(G*mstat_L))**(0.5)/((SlopK4*(Mstat_L/Rstat_L)**4+SlopK3*(Mstat_L/Rstat_L)**3+SlopK2*(Mstat_L/Rstat_L)**2+SlopK*Mstat_L/Rstat_L+InterK))    # Normalized angular frequency
-m0_L = M0_L * 1.9884e33     # Baryonic mass
-normJ_L = (c*J_L)/(G*m0_L**2)     # Normalized angular momentum
-a_L = (c*J_L)/(G*m_L**2)         # spin parameter
+m_L = M_L * 1.9884e33   
+r_L = R_L * 1.0e5       
+mmax_L = Mmax_L * 1.9884e33   
+rstat_L = Rstat_L * 1.0e5   
+mstat_L = Mstat_L * 1.9884e33   
+delta_L = freq_L * (2*np.pi) * ((rstat_L**3)/(G*mstat_L))**(0.5)/((SlopK4*(Mstat_L/Rstat_L)**4+SlopK3*(Mstat_L/Rstat_L)**3+SlopK2*(Mstat_L/Rstat_L)**2+SlopK*Mstat_L/Rstat_L+InterK))   
+m0_L = M0_L * 1.9884e33     
+normJ_L = (c*J_L)/(G*m0_L**2)    
+a_L = (c*J_L)/(G*m_L**2)         
 
 
 
 
 # Extracting columns from the data files of each EOS
 # Greif EOS
-ec_HLPS1 = dataHLPS1[0,:]*10**15   # central energy density (in g/cm^3)
-M_HLPS1 = dataHLPS1[1,:]           # Total mass (in Msun)
-M0_HLPS1 = dataHLPS1[2,:]          # Baryonic mass (in Msun)
-Mstat_HLPS1 = dataHLPS1[3,:]       # Mass when the NS is not rotating (in Msun)
-#Mmax_HLPS1 = dataHLPS1[4,:]        # Maximum mass for a given EOS (in Msun)
-R_HLPS1 = dataHLPS1[5,:]           # Radius (in km)
-Rratio_HLPS1 = dataHLPS1[6,:]      # Ratio rp/re
-Rstat_HLPS1 = dataHLPS1[7,:]       # Radius when the NS is not rotating (in km)
-freq_HLPS1 = dataHLPS1[8,:]        # Rotational frequency (in Hz)
-kfreq_HLPS1 = dataHLPS1[9,:]       # Kepler limit (in Hz)
-J_HLPS1 = dataHLPS1[10,:]          # Angular momentum (in cm^2 g/s)
-T_HLPS1 = dataHLPS1[11,:]          # Rotational kinetic energy (in g)
-W_HLPS1 = dataHLPS1[12,:]          # Gravitational binding energy (in g)
-#Rmax_HLPS1 = dataHLPS1[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_HLPS1 = dataHLPS1[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec_HLPS1 = dataHLPS1[0,:]*10**15   
+M_HLPS1 = dataHLPS1[1,:]           
+M0_HLPS1 = dataHLPS1[2,:]          
+Mstat_HLPS1 = dataHLPS1[3,:]       
+#Mmax_HLPS1 = dataHLPS1[4,:]        
+R_HLPS1 = dataHLPS1[5,:]           
+Rratio_HLPS1 = dataHLPS1[6,:]      
+Rstat_HLPS1 = dataHLPS1[7,:]       
+freq_HLPS1 = dataHLPS1[8,:]        
+kfreq_HLPS1 = dataHLPS1[9,:]       
+J_HLPS1 = dataHLPS1[10,:]          
+T_HLPS1 = dataHLPS1[11,:]          
+W_HLPS1 = dataHLPS1[12,:]          
+#Rmax_HLPS1 = dataHLPS1[13,:]       
+#Qmax_HLPS1 = dataHLPS1[14,:]       
 
 Mmax0=0;
 for i in dataHLPS1[1,:]:
@@ -1388,35 +1389,35 @@ for i in dataHLPS1[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_HLPS1 = M_HLPS1 * 1.9884e33   # Mass (in g)
-r_HLPS1 = R_HLPS1 * 1.0e5       # Radius (in cm)
-mmax_HLPS1 = Mmax_HLPS1 * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_HLPS1 = Rstat_HLPS1 * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_HLPS1 = Mstat_HLPS1 * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_HLPS1 = freq_HLPS1 * (2*np.pi) * ((rstat_HLPS1**3)/(G*mstat_HLPS1))**(0.5)/((SlopK4*(Mstat_HLPS1/Rstat_HLPS1)**4+SlopK3*(Mstat_HLPS1/Rstat_HLPS1)**3+SlopK2*(Mstat_HLPS1/Rstat_HLPS1)**2+SlopK*Mstat_HLPS1/Rstat_HLPS1+InterK))    # Normalized angular frequency
-m0_HLPS1 = M0_HLPS1 * 1.9884e33     # Baryonic mass
-normJ_HLPS1 = (c*J_HLPS1)/(G*m0_HLPS1**2)     # Normalized angular momentum
-a_HLPS1 = (c*J_HLPS1)/(G*m_HLPS1**2)         # spin parameter
+m_HLPS1 = M_HLPS1 * 1.9884e33   
+r_HLPS1 = R_HLPS1 * 1.0e5       
+mmax_HLPS1 = Mmax_HLPS1 * 1.9884e33   
+rstat_HLPS1 = Rstat_HLPS1 * 1.0e5   
+mstat_HLPS1 = Mstat_HLPS1 * 1.9884e33   
+delta_HLPS1 = freq_HLPS1 * (2*np.pi) * ((rstat_HLPS1**3)/(G*mstat_HLPS1))**(0.5)/((SlopK4*(Mstat_HLPS1/Rstat_HLPS1)**4+SlopK3*(Mstat_HLPS1/Rstat_HLPS1)**3+SlopK2*(Mstat_HLPS1/Rstat_HLPS1)**2+SlopK*Mstat_HLPS1/Rstat_HLPS1+InterK))   
+m0_HLPS1 = M0_HLPS1 * 1.9884e33     
+normJ_HLPS1 = (c*J_HLPS1)/(G*m0_HLPS1**2)    
+a_HLPS1 = (c*J_HLPS1)/(G*m_HLPS1**2)         
 
 
 
 # Extracting columns from the data files of each EOS
 # Greif EOS
-ec_ABPR1 = dataABPR1[0,:]*10**15   # central energy density (in g/cm^3)
-M_ABPR1 = dataABPR1[1,:]           # Total mass (in Msun)
-M0_ABPR1 = dataABPR1[2,:]          # Baryonic mass (in Msun)
-Mstat_ABPR1 = dataABPR1[3,:]       # Mass when the NS is not rotating (in Msun)
-#Mmax_ABPR1 = dataABPR1[4,:]        # Maximum mass for a given EOS (in Msun)
-R_ABPR1 = dataABPR1[5,:]           # Radius (in km)
-Rratio_ABPR1 = dataABPR1[6,:]      # Ratio rp/re
-Rstat_ABPR1 = dataABPR1[7,:]       # Radius when the NS is not rotating (in km)
-freq_ABPR1 = dataABPR1[8,:]        # Rotational frequency (in Hz)
-kfreq_ABPR1 = dataABPR1[9,:]       # Kepler limit (in Hz)
-J_ABPR1 = dataABPR1[10,:]          # Angular momentum (in cm^2 g/s)
-T_ABPR1 = dataABPR1[11,:]          # Rotational kinetic energy (in g)
-W_ABPR1 = dataABPR1[12,:]          # Gravitational binding energy (in g)
-#Rmax_ABPR1 = dataABPR1[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_ABPR1 = dataABPR1[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec_ABPR1 = dataABPR1[0,:]*10**15   
+M_ABPR1 = dataABPR1[1,:]           
+M0_ABPR1 = dataABPR1[2,:]          
+Mstat_ABPR1 = dataABPR1[3,:]       
+#Mmax_ABPR1 = dataABPR1[4,:]        
+R_ABPR1 = dataABPR1[5,:]           
+Rratio_ABPR1 = dataABPR1[6,:]      
+Rstat_ABPR1 = dataABPR1[7,:]       
+freq_ABPR1 = dataABPR1[8,:]        
+kfreq_ABPR1 = dataABPR1[9,:]       
+J_ABPR1 = dataABPR1[10,:]          
+T_ABPR1 = dataABPR1[11,:]          
+W_ABPR1 = dataABPR1[12,:]          
+#Rmax_ABPR1 = dataABPR1[13,:]       
+#Qmax_ABPR1 = dataABPR1[14,:]       
 
 Mmax0=0;
 for i in dataABPR1[1,:]:
@@ -1453,34 +1454,34 @@ for i in dataABPR1[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_ABPR1 = M_ABPR1 * 1.9884e33   # Mass (in g)
-r_ABPR1 = R_ABPR1 * 1.0e5       # Radius (in cm)
-mmax_ABPR1 = Mmax_ABPR1 * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_ABPR1 = Rstat_ABPR1 * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_ABPR1 = Mstat_ABPR1 * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_ABPR1 = freq_ABPR1 * (2*np.pi) * ((rstat_ABPR1**3)/(G*mstat_ABPR1))**(0.5) /((SlopK4*(Mstat_ABPR1/Rstat_ABPR1)**4+SlopK3*(Mstat_ABPR1/Rstat_ABPR1)**3+SlopK2*(Mstat_ABPR1/Rstat_ABPR1)**2+SlopK*Mstat_ABPR1/Rstat_ABPR1+InterK))   # Normalized angular frequency
-m0_ABPR1 = M0_ABPR1 * 1.9884e33     # Baryonic mass
-normJ_ABPR1 = (c*J_ABPR1)/(G*m0_ABPR1**2)     # Normalized angular momentum
-a_ABPR1 = (c*J_ABPR1)/(G*m_ABPR1**2)         # spin parameter
+m_ABPR1 = M_ABPR1 * 1.9884e33   
+r_ABPR1 = R_ABPR1 * 1.0e5       
+mmax_ABPR1 = Mmax_ABPR1 * 1.9884e33   
+rstat_ABPR1 = Rstat_ABPR1 * 1.0e5   
+mstat_ABPR1 = Mstat_ABPR1 * 1.9884e33   
+delta_ABPR1 = freq_ABPR1 * (2*np.pi) * ((rstat_ABPR1**3)/(G*mstat_ABPR1))**(0.5) /((SlopK4*(Mstat_ABPR1/Rstat_ABPR1)**4+SlopK3*(Mstat_ABPR1/Rstat_ABPR1)**3+SlopK2*(Mstat_ABPR1/Rstat_ABPR1)**2+SlopK*Mstat_ABPR1/Rstat_ABPR1+InterK))  
+m0_ABPR1 = M0_ABPR1 * 1.9884e33     
+normJ_ABPR1 = (c*J_ABPR1)/(G*m0_ABPR1**2)    
+a_ABPR1 = (c*J_ABPR1)/(G*m_ABPR1**2)         
 
 
 # Extracting columns from the data files of each EOS
 # Greif EOS
-ec_BBB1 = dataBBB1[0,:]*10**15   # central energy density (in g/cm^3)
-M_BBB1 = dataBBB1[1,:]           # Total mass (in Msun)
-M0_BBB1 = dataBBB1[2,:]          # Baryonic mass (in Msun)
-Mstat_BBB1 = dataBBB1[3,:]       # Mass when the NS is not rotating (in Msun)
-#Mmax_BBB1 = dataBBB1[4,:]        # Maximum mass for a given EOS (in Msun)
-R_BBB1 = dataBBB1[5,:]           # Radius (in km)
-Rratio_BBB1 = dataBBB1[6,:]      # Ratio rp/re
-Rstat_BBB1 = dataBBB1[7,:]       # Radius when the NS is not rotating (in km)
-freq_BBB1 = dataBBB1[8,:]        # Rotational frequency (in Hz)
-kfreq_BBB1 = dataBBB1[9,:]       # Kepler limit (in Hz)
-J_BBB1 = dataBBB1[10,:]          # Angular momentum (in cm^2 g/s)
-T_BBB1 = dataBBB1[11,:]          # Rotational kinetic energy (in g)
-W_BBB1 = dataBBB1[12,:]          # Gravitational binding energy (in g)
-#Rmax_BBB1 = dataBBB1[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_BBB1 = dataBBB1[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec_BBB1 = dataBBB1[0,:]*10**15   
+M_BBB1 = dataBBB1[1,:]           
+M0_BBB1 = dataBBB1[2,:]          
+Mstat_BBB1 = dataBBB1[3,:]       
+#Mmax_BBB1 = dataBBB1[4,:]        
+R_BBB1 = dataBBB1[5,:]           
+Rratio_BBB1 = dataBBB1[6,:]      
+Rstat_BBB1 = dataBBB1[7,:]       
+freq_BBB1 = dataBBB1[8,:]        
+kfreq_BBB1 = dataBBB1[9,:]       
+J_BBB1 = dataBBB1[10,:]          
+T_BBB1 = dataBBB1[11,:]          
+W_BBB1 = dataBBB1[12,:]          
+#Rmax_BBB1 = dataBBB1[13,:]       
+#Qmax_BBB1 = dataBBB1[14,:]       
 
 Mmax0=0;
 for i in dataBBB1[1,:]:
@@ -1517,34 +1518,34 @@ for i in dataBBB1[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_BBB1 = M_BBB1 * 1.9884e33   # Mass (in g)
-r_BBB1 = R_BBB1 * 1.0e5       # Radius (in cm)
-mmax_BBB1 = Mmax_BBB1 * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_BBB1 = Rstat_BBB1 * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_BBB1 = Mstat_BBB1 * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_BBB1 = freq_BBB1 * (2*np.pi) * ((rstat_BBB1**3)/(G*mstat_BBB1))**(0.5) /((SlopK4*(Mstat_BBB1/Rstat_BBB1)**4+SlopK3*(Mstat_BBB1/Rstat_BBB1)**3+SlopK2*(Mstat_BBB1/Rstat_BBB1)**2+SlopK*Mstat_BBB1/Rstat_BBB1+InterK))   # Normalized angular frequency
-m0_BBB1 = M0_BBB1 * 1.9884e33     # Baryonic mass
-normJ_BBB1 = (c*J_BBB1)/(G*m0_BBB1**2)     # Normalized angular momentum
-a_BBB1 = (c*J_BBB1)/(G*m_BBB1**2)         # spin parameter
+m_BBB1 = M_BBB1 * 1.9884e33   
+r_BBB1 = R_BBB1 * 1.0e5       
+mmax_BBB1 = Mmax_BBB1 * 1.9884e33   
+rstat_BBB1 = Rstat_BBB1 * 1.0e5   
+mstat_BBB1 = Mstat_BBB1 * 1.9884e33   
+delta_BBB1 = freq_BBB1 * (2*np.pi) * ((rstat_BBB1**3)/(G*mstat_BBB1))**(0.5) /((SlopK4*(Mstat_BBB1/Rstat_BBB1)**4+SlopK3*(Mstat_BBB1/Rstat_BBB1)**3+SlopK2*(Mstat_BBB1/Rstat_BBB1)**2+SlopK*Mstat_BBB1/Rstat_BBB1+InterK))  
+m0_BBB1 = M0_BBB1 * 1.9884e33     
+normJ_BBB1 = (c*J_BBB1)/(G*m0_BBB1**2)    
+a_BBB1 = (c*J_BBB1)/(G*m_BBB1**2)         
 
 
 # Extracting columns from the data files of each EOS
 # Greif EOS
-ec_BBB2 = dataBBB2[0,:]*10**15   # central energy density (in g/cm^3)
-M_BBB2 = dataBBB2[1,:]           # Total mass (in Msun)
-M0_BBB2 = dataBBB2[2,:]          # Baryonic mass (in Msun)
-Mstat_BBB2 = dataBBB2[3,:]       # Mass when the NS is not rotating (in Msun)
-#Mmax_BBB2 = dataBBB2[4,:]        # Maximum mass for a given EOS (in Msun)
-R_BBB2 = dataBBB2[5,:]           # Radius (in km)
-Rratio_BBB2 = dataBBB2[6,:]      # Ratio rp/re
-Rstat_BBB2 = dataBBB2[7,:]       # Radius when the NS is not rotating (in km)
-freq_BBB2 = dataBBB2[8,:]        # Rotational frequency (in Hz)
-kfreq_BBB2 = dataBBB2[9,:]       # Kepler limit (in Hz)
-J_BBB2 = dataBBB2[10,:]          # Angular momentum (in cm^2 g/s)
-T_BBB2 = dataBBB2[11,:]          # Rotational kinetic energy (in g)
-W_BBB2 = dataBBB2[12,:]          # Gravitational binding energy (in g)
-#Rmax_BBB2 = dataBBB2[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_BBB2 = dataBBB2[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec_BBB2 = dataBBB2[0,:]*10**15   
+M_BBB2 = dataBBB2[1,:]           
+M0_BBB2 = dataBBB2[2,:]          
+Mstat_BBB2 = dataBBB2[3,:]       
+#Mmax_BBB2 = dataBBB2[4,:]        
+R_BBB2 = dataBBB2[5,:]           
+Rratio_BBB2 = dataBBB2[6,:]      
+Rstat_BBB2 = dataBBB2[7,:]       
+freq_BBB2 = dataBBB2[8,:]        
+kfreq_BBB2 = dataBBB2[9,:]       
+J_BBB2 = dataBBB2[10,:]          
+T_BBB2 = dataBBB2[11,:]          
+W_BBB2 = dataBBB2[12,:]          
+#Rmax_BBB2 = dataBBB2[13,:]       
+#Qmax_BBB2 = dataBBB2[14,:]       
 
 Mmax0=0;
 for i in dataBBB2[1,:]:
@@ -1581,35 +1582,35 @@ for i in dataBBB2[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_BBB2 = M_BBB2 * 1.9884e33   # Mass (in g)
-r_BBB2 = R_BBB2 * 1.0e5       # Radius (in cm)
-mmax_BBB2 = Mmax_BBB2 * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_BBB2 = Rstat_BBB2 * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_BBB2 = Mstat_BBB2 * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_BBB2 = freq_BBB2 * (2*np.pi) * ((rstat_BBB2**3)/(G*mstat_BBB2))**(0.5) /((SlopK4*(Mstat_BBB2/Rstat_BBB2)**4+SlopK3*(Mstat_BBB2/Rstat_BBB2)**3+SlopK2*(Mstat_BBB2/Rstat_BBB2)**2+SlopK*Mstat_BBB2/Rstat_BBB2+InterK))     # Normalized angular frequency
-m0_BBB2 = M0_BBB2 * 1.9884e33     # Baryonic mass
-normJ_BBB2 = (c*J_BBB2)/(G*m0_BBB2**2)     # Normalized angular momentum
-a_BBB2 = (c*J_BBB2)/(G*m_BBB2**2)         # spin parameter
+m_BBB2 = M_BBB2 * 1.9884e33   
+r_BBB2 = R_BBB2 * 1.0e5       
+mmax_BBB2 = Mmax_BBB2 * 1.9884e33   
+rstat_BBB2 = Rstat_BBB2 * 1.0e5   
+mstat_BBB2 = Mstat_BBB2 * 1.9884e33   
+delta_BBB2 = freq_BBB2 * (2*np.pi) * ((rstat_BBB2**3)/(G*mstat_BBB2))**(0.5) /((SlopK4*(Mstat_BBB2/Rstat_BBB2)**4+SlopK3*(Mstat_BBB2/Rstat_BBB2)**3+SlopK2*(Mstat_BBB2/Rstat_BBB2)**2+SlopK*Mstat_BBB2/Rstat_BBB2+InterK))    
+m0_BBB2 = M0_BBB2 * 1.9884e33     
+normJ_BBB2 = (c*J_BBB2)/(G*m0_BBB2**2)    
+a_BBB2 = (c*J_BBB2)/(G*m_BBB2**2)         
 
 
 
 # Extracting columns from the data files of each EOS
 # EOS APR
-ec_APR = dataAPR[0,:]*10**15   # central energy density (in g/cm^3)
-M_APR = dataAPR[1,:]           # Total mass (in Msun)
-M0_APR = dataAPR[2,:]          # Baryonic mass (in Msun)
-Mstat_APR = dataAPR[3,:]       # Mass when the NS is not rotating (in Msun)
-#Mmax_APR = dataAPR[4,:]        # Maximum mass for a given EOS (in Msun)
-R_APR = dataAPR[5,:]           # Radius (in km)
-Rratio_APR = dataAPR[6,:]      # Ratio rp/re
-Rstat_APR = dataAPR[7,:]       # Radius when the NS is not rotating (in km)
-freq_APR = dataAPR[8,:]        # Rotational frequency (in Hz)
-kfreq_APR = dataAPR[9,:]       # Kepler limit (in Hz)
-J_APR = dataAPR[10,:]          # Angular momentum (in cm^2 g/s)
-T_APR = dataAPR[11,:]          # Rotational kinetic energy (in g)
-W_APR = dataAPR[12,:]          # Gravitational binding energy (in g)
-#Rmax_APR = dataAPR[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_APR = dataAPR[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec_APR = dataAPR[0,:]*10**15   
+M_APR = dataAPR[1,:]           
+M0_APR = dataAPR[2,:]          
+Mstat_APR = dataAPR[3,:]       
+#Mmax_APR = dataAPR[4,:]        
+R_APR = dataAPR[5,:]           
+Rratio_APR = dataAPR[6,:]      
+Rstat_APR = dataAPR[7,:]       
+freq_APR = dataAPR[8,:]        
+kfreq_APR = dataAPR[9,:]       
+J_APR = dataAPR[10,:]          
+T_APR = dataAPR[11,:]          
+W_APR = dataAPR[12,:]          
+#Rmax_APR = dataAPR[13,:]       
+#Qmax_APR = dataAPR[14,:]       
 
 Mmax2=0;
 for i in dataAPR[1,:]:
@@ -1646,15 +1647,15 @@ for i in dataAPR[8,:]:
 
 # Converting parameters to CGS units
 # EOS APR
-m_APR = M_APR * 1.9884e33   # Mass (in g)
-r_APR = R_APR * 1.0e5       # Radius (in cm)
-mmax_APR = Mmax_APR * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_APR = Rstat_APR * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_APR = Mstat_APR * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_APR = freq_APR * (2*np.pi) * ((rstat_APR**3)/(G*mstat_APR))**(0.5)/((SlopK4*(Mstat_APR/Rstat_APR)**4+SlopK3*(Mstat_APR/Rstat_APR)**3+SlopK2*(Mstat_APR/Rstat_APR)**2+SlopK*Mstat_APR/Rstat_APR+InterK))      # Normalized angular frequency
-m0_APR = M0_APR * 1.9884e33     # Baryonic mass
-normJ_APR = (c*J_APR)/(G*m0_APR**2)     # Normalized angular momentum
-a_APR = (c*J_APR)/(G*m_APR**2)         # spin parameter
+m_APR = M_APR * 1.9884e33   
+r_APR = R_APR * 1.0e5       
+mmax_APR = Mmax_APR * 1.9884e33   
+rstat_APR = Rstat_APR * 1.0e5   
+mstat_APR = Mstat_APR * 1.9884e33   
+delta_APR = freq_APR * (2*np.pi) * ((rstat_APR**3)/(G*mstat_APR))**(0.5)/((SlopK4*(Mstat_APR/Rstat_APR)**4+SlopK3*(Mstat_APR/Rstat_APR)**3+SlopK2*(Mstat_APR/Rstat_APR)**2+SlopK*Mstat_APR/Rstat_APR+InterK))     
+m0_APR = M0_APR * 1.9884e33     
+normJ_APR = (c*J_APR)/(G*m0_APR**2)    
+a_APR = (c*J_APR)/(G*m_APR**2)         
 
 
 
@@ -1662,21 +1663,21 @@ a_APR = (c*J_APR)/(G*m_APR**2)         # spin parameter
 '''
 # Extracting columns from the data files of each EOS
 # Greif EOS
-ec_Q1 = dataQ1[0,:]*10**15   # central energy density (in g/cm^3)
-M_Q1 = dataQ1[1,:]           # Total mass (in Msun)
-M0_Q1 = dataQ1[2,:]          # Baryonic mass (in Msun)
-Mstat_Q1 = dataQ1[3,:]       # Mass when the NS is not rotating (in Msun)
-#Mmax_Q1 = dataQ1[4,:]        # Maximum mass for a given EOS (in Msun)
-R_Q1 = dataQ1[5,:]           # Radius (in km)
-Rratio_Q1 = dataQ1[6,:]      # Ratio rp/re
-Rstat_Q1 = dataQ1[7,:]       # Radius when the NS is not rotating (in km)
-freq_Q1 = dataQ1[8,:]        # Rotational frequency (in Hz)
-kfreq_Q1 = dataQ1[9,:]       # Kepler limit (in Hz)
-J_Q1 = dataQ1[10,:]          # Angular momentum (in cm^2 g/s)
-T_Q1 = dataQ1[11,:]          # Rotational kinetic energy (in g)
-W_Q1 = dataQ1[12,:]          # Gravitational binding energy (in g)
-#Rmax_Q1 = dataQ1[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_Q1 = dataQ1[14,:]       # MaxMass / MaxRadius of the non rotating star
+ec_Q1 = dataQ1[0,:]*10**15   
+M_Q1 = dataQ1[1,:]           
+M0_Q1 = dataQ1[2,:]          
+Mstat_Q1 = dataQ1[3,:]       
+#Mmax_Q1 = dataQ1[4,:]        
+R_Q1 = dataQ1[5,:]           
+Rratio_Q1 = dataQ1[6,:]      
+Rstat_Q1 = dataQ1[7,:]       
+freq_Q1 = dataQ1[8,:]        
+kfreq_Q1 = dataQ1[9,:]       
+J_Q1 = dataQ1[10,:]          
+T_Q1 = dataQ1[11,:]          
+W_Q1 = dataQ1[12,:]          
+#Rmax_Q1 = dataQ1[13,:]       
+#Qmax_Q1 = dataQ1[14,:]       
 
 Mmax0=0;
 for i in dataQ1[1,:]:
@@ -1713,16 +1714,16 @@ for i in dataQ1[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_Q1 = M_Q1 * 1.9884e33   # Mass (in g)
-r_Q1 = R_Q1 * 1.0e5       # Radius (in cm)
-mmax_Q1 = Mmax_Q1 * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_Q1 = Rstat_Q1 * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_Q1 = Mstat_Q1 * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_Q1 = freq_Q1 * (2*np.pi) * ((rstat_Q1**3)/(G*mstat_Q1))**(0.5)/((SlopK4*(Mstat_Q1/Rstat_Q1)**4+SlopK3*(Mstat_Q1/Rstat_Q1)**3+SlopK2*(Mstat_Q1/Rstat_Q1)**2+SlopK*Mstat_Q1/Rstat_Q1+InterK))    # Normalized angular frequency
-m0_Q1 = M0_Q1 * 1.9884e33     # Baryonic mass
-normJ_Q1 = (c*J_Q1)/(G*m0_Q1**2)     # Normalized angular momentum
-a_Q1 = (c*J_Q1)/(G*m_Q1**2)         # spin parameter
-'''
+m_Q1 = M_Q1 * 1.9884e33   
+r_Q1 = R_Q1 * 1.0e5       
+mmax_Q1 = Mmax_Q1 * 1.9884e33   
+rstat_Q1 = Rstat_Q1 * 1.0e5   
+mstat_Q1 = Mstat_Q1 * 1.9884e33   
+delta_Q1 = freq_Q1 * (2*np.pi) * ((rstat_Q1**3)/(G*mstat_Q1))**(0.5)/((SlopK4*(Mstat_Q1/Rstat_Q1)**4+SlopK3*(Mstat_Q1/Rstat_Q1)**3+SlopK2*(Mstat_Q1/Rstat_Q1)**2+SlopK*Mstat_Q1/Rstat_Q1+InterK))   
+m0_Q1 = M0_Q1 * 1.9884e33     
+normJ_Q1 = (c*J_Q1)/(G*m0_Q1**2)    
+a_Q1 = (c*J_Q1)/(G*m_Q1**2)         
+
 
 ec_Q1 = dataQ1[0,:]*10**15 
 M_Q1 = dataQ1[1,:]
@@ -1772,16 +1773,16 @@ for i in dataQ1[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_Q1 = M_Q1 * 1.9884e33   # Mass (in g)
-r_Q1 = R_Q1 * 1.0e5       # Radius (in cm)
-mmax_Q1 = Mmax_Q1 * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_Q1 = Rstat_Q1 * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_Q1 = Mstat_Q1 * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_Q1 = freq_Q1 * (2*np.pi) * ((rstat_Q1**3)/(G*mstat_Q1))**(0.5)/((SlopK4*(Mstat_Q1/Rstat_Q1)**4+SlopK3*(Mstat_Q1/Rstat_Q1)**3+SlopK2*(Mstat_Q1/Rstat_Q1)**2+SlopK*Mstat_Q1/Rstat_Q1+InterK))#**0.5   # Normalized angular frequency
-m0_Q1 = M0_Q1 * 1.9884e33     # Baryonic mass
-normJ_Q1 = (c*J_Q1)/(G*m0_Q1**2)     # Normalized angular momentum
-a_Q1 = (c*J_Q1)/(G*m_Q1**2)         # spin parameter
-
+m_Q1 = M_Q1 * 1.9884e33   
+r_Q1 = R_Q1 * 1.0e5       
+mmax_Q1 = Mmax_Q1 * 1.9884e33   
+rstat_Q1 = Rstat_Q1 * 1.0e5   
+mstat_Q1 = Mstat_Q1 * 1.9884e33   
+delta_Q1 = freq_Q1 * (2*np.pi) * ((rstat_Q1**3)/(G*mstat_Q1))**(0.5)/((SlopK4*(Mstat_Q1/Rstat_Q1)**4+SlopK3*(Mstat_Q1/Rstat_Q1)**3+SlopK2*(Mstat_Q1/Rstat_Q1)**2+SlopK*Mstat_Q1/Rstat_Q1+InterK))#**0.5  
+m0_Q1 = M0_Q1 * 1.9884e33     
+normJ_Q1 = (c*J_Q1)/(G*m0_Q1**2)    
+a_Q1 = (c*J_Q1)/(G*m_Q1**2)         
+'''
 
 
 
@@ -1800,8 +1801,8 @@ T_H0 = dataH0[10,:]
 W_H0 = dataH0[11,:]
 RratioS_H0 = dataH0[12,:]
 Mp=M+W-T
-#Rmax_H0 = dataH0[13,:]       # Maximum radius of the non rotating star (in km)
-#Qmax_H0 = dataH0[14,:]       # MaxMass / MaxRadius of the non rotating star
+#Rmax_H0 = dataH0[13,:]       
+#Qmax_H0 = dataH0[14,:]       
 
 Mmax0=0;
 for i in dataH0[1,:]:
@@ -1838,15 +1839,15 @@ for i in dataH0[8,:]:
 
 # Converting parameters to CGS units
 # Greif EOS
-m_H0 = M_H0 * 1.9884e33   # Mass (in g)
-r_H0 = R_H0 * 1.0e5       # Radius (in cm)
-mmax_H0 = Mmax_H0 * 1.9884e33   # Maximum mass for a given EOS (in g)
-rstat_H0 = Rstat_H0 * 1.0e5   # Radius of the non rotating NS (in cm)
-mstat_H0 = Mstat_H0 * 1.9884e33   # Mass of the non rotating NS (in g)
-delta_H0 = freq_H0 * (2*np.pi) * ((rstat_H0**3)/(G*mstat_H0))**(0.5)/((SlopK4*(Mstat_H0/Rstat_H0)**4+SlopK3*(Mstat_H0/Rstat_H0)**3+SlopK2*(Mstat_H0/Rstat_H0)**2+SlopK*Mstat_H0/Rstat_H0+InterK))    # Normalized angular frequency
-m0_H0 = M0_H0 * 1.9884e33     # Baryonic mass
-normJ_H0 = (c*J_H0)/(G*m0_H0**2)     # Normalized angular momentum
-a_H0 = (c*J_H0)/(G*m_H0**2)         # spin parameter
+m_H0 = M_H0 * 1.9884e33   
+r_H0 = R_H0 * 1.0e5       
+mmax_H0 = Mmax_H0 * 1.9884e33   
+rstat_H0 = Rstat_H0 * 1.0e5   
+mstat_H0 = Mstat_H0 * 1.9884e33   
+delta_H0 = freq_H0 * (2*np.pi) * ((rstat_H0**3)/(G*mstat_H0))**(0.5)/((SlopK4*(Mstat_H0/Rstat_H0)**4+SlopK3*(Mstat_H0/Rstat_H0)**3+SlopK2*(Mstat_H0/Rstat_H0)**2+SlopK*Mstat_H0/Rstat_H0+InterK))   
+m0_H0 = M0_H0 * 1.9884e33     
+normJ_H0 = (c*J_H0)/(G*m0_H0**2)    
+a_H0 = (c*J_H0)/(G*m_H0**2)         
 
 
 
@@ -1854,16 +1855,16 @@ a_H0 = (c*J_H0)/(G*m_H0**2)         # spin parameter
 
 
 
-deltanuc= numpy.concatenate((delta_APR,delta_BBB1,delta_BBB2,delta_L,delta_HLPS1,delta_HLPS2,delta_HLPS3,delta_ABPR1,delta_ABPR2,delta_QHCD,delta_H0))
+deltanuc= numpy.concatenate((delta_APR,delta_BBB1,delta_BBB2,delta_L,delta_HLPS1,delta_HLPS2,delta_ABPR1,delta_ABPR2,delta_QHCD,delta_H0))
 
-Rnuc=  numpy.concatenate((R_APR,R_BBB1,R_BBB2,R_L,R_HLPS1,R_HLPS2,R_HLPS3,R_ABPR1,R_ABPR2,R_QHCD,R_H0))
+Rnuc=  numpy.concatenate((R_APR,R_BBB1,R_BBB2,R_L,R_HLPS1,R_HLPS2,R_ABPR1,R_ABPR2,R_QHCD,R_H0))
 
-Mnuc= numpy.concatenate((M_APR,M_BBB1,M_BBB2,M_L,M_HLPS1,M_HLPS2,M_HLPS3,M_ABPR1,M_ABPR2,M_QHCD,M_H0))
+Mnuc= numpy.concatenate((M_APR,M_BBB1,M_BBB2,M_L,M_HLPS1,M_HLPS2,M_ABPR1,M_ABPR2,M_QHCD,M_H0))
    
 
-Rstatnuc = numpy.concatenate((Rstat_APR,Rstat_BBB1,Rstat_BBB2,Rstat_L,Rstat_HLPS1,Rstat_HLPS2,Rstat_HLPS3,Rstat_ABPR1,Rstat_ABPR2,Rstat_QHCD,Rstat_H0))
+Rstatnuc = numpy.concatenate((Rstat_APR,Rstat_BBB1,Rstat_BBB2,Rstat_L,Rstat_HLPS1,Rstat_HLPS2,Rstat_ABPR1,Rstat_ABPR2,Rstat_QHCD,Rstat_H0))
 
-Mstatnuc=  numpy.concatenate((Mstat_APR,Mstat_BBB1,Mstat_BBB2,Mstat_L,Mstat_HLPS1,Mstat_HLPS2,Mstat_HLPS3,Mstat_ABPR1,Mstat_ABPR2,Mstat_QHCD,Mstat_H0))
+Mstatnuc=  numpy.concatenate((Mstat_APR,Mstat_BBB1,Mstat_BBB2,Mstat_L,Mstat_HLPS1,Mstat_HLPS2,Mstat_ABPR1,Mstat_ABPR2,Mstat_QHCD,Mstat_H0))
 
 
 
@@ -2364,7 +2365,7 @@ if method == 0:
     cax = divider.append_axes("right", size=width, pad=pad)
 
     plt.colorbar(im, cax=cax)
-    plt.savefig('ReRpC.pdf', format = 'pdf', transparent=False)
+    plt.savefig('ReRpC.png', format = 'png', transparent=False)
     plt.show()
     
     '''
@@ -2493,15 +2494,15 @@ if method == 0:
     plt.legend()
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('Things.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Things.png', format = 'png', transparent=False)
     plt.show()
     '''
 elif method == 1:
     
 
     yData = numpy.array(Mstat/Rstat)
-    xData = numpy.array(-(W)/(1.9884e33*M))
-    zData = numpy.array((M-M0+W/(1.9884e33)-T/(1.9884e33))/(M))
+    xData = numpy.array(-(W)/(M))
+    zData = numpy.array((M-M0+W-T)/(M))
 
 
     a4,a3,a2,a1,a0=np.polyfit(xData,zData,4)
@@ -2519,7 +2520,7 @@ elif method == 1:
     plt.legend(loc='best')
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('Vir2d.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Vir2d.png', format = 'png', transparent=False)
     plt.show()
 elif method == 2:
     
@@ -2546,8 +2547,8 @@ elif method == 2:
     plt.legend(prop={"size":12})
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('Gr2d.pdf', format = 'pdf', transparent=False)
-    #plt.savefig('InEn2d.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Gr2d.png', format = 'png', transparent=False)
+    #plt.savefig('InEn2d.png', format = 'png', transparent=False)
     plt.show()    
 elif method == 3:
 
@@ -2632,7 +2633,7 @@ elif method == 3:
     plt.legend(prop={"size":16})
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('Im.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Im.png', format = 'png', transparent=False)
     plt.show()
 
 
@@ -2683,7 +2684,7 @@ elif method == 4:
     plt.legend(prop={"size":16})
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('BindEnergyComparison.pdf', format = 'pdf', transparent=False)
+    plt.savefig('BindEnergyComparison.png', format = 'png', transparent=False)
     plt.show()  
         
 elif method == 5:
@@ -2708,7 +2709,7 @@ elif method == 5:
     plt.legend(prop={"size":16})
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('Maxmass.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Maxmass.png', format = 'png', transparent=False)
     plt.show()
 elif method == 6:
 
@@ -2733,7 +2734,7 @@ elif method == 6:
     plt.legend(prop={"size":16})
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('Maxradius.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Maxradius.png', format = 'png', transparent=False)
     plt.show()   
 
 
@@ -2754,7 +2755,7 @@ elif method == 7:
     #
     ax.view_init(azim=147,elev=17)
     plt.legend()
-    plt.savefig('RadialChangeBoth.pdf', format = 'pdf', transparent=False)
+    plt.savefig('RadialChangeBoth.png', format = 'png', transparent=False)
     plt.show()
     
 
@@ -2773,7 +2774,7 @@ elif method == 8:
     ax.set_zlabel(r'$M/M_*$', fontsize='24')
     ax.view_init(azim=147,elev=17)
     plt.legend()
-    plt.savefig('MassChangeBoth.pdf', format = 'pdf', transparent=False)
+    plt.savefig('MassChangeBoth.png', format = 'png', transparent=False)
     plt.show()
     '''
     
@@ -2877,9 +2878,9 @@ elif method == 8:
 
     plt.colorbar(im, cax=cax)
 
-    #plt.savefig('Mass2D.pdf', format = 'pdf', transparent=False)
-    plt.savefig('Radius2D.pdf', format = 'pdf', transparent=False)
-    #plt.savefig('Compact2D.pdf', format = 'pdf', transparent=False)
+    #plt.savefig('Mass2D.png', format = 'png', transparent=False)
+    plt.savefig('Radius2D.png', format = 'png', transparent=False)
+    #plt.savefig('Compact2D.png', format = 'png', transparent=False)
     
     plt.show()
 
@@ -2892,7 +2893,7 @@ elif method == 8:
     
     plt.xlabel(r'$\Omega_n$', fontsize='24')
     plt.ylabel(r'$C_*$ ', fontsize='24')
-    plt.savefig('MassChange2D.pdf', format = 'pdf', transparent=False)
+    plt.savefig('MassChange2D.png', format = 'png', transparent=False)
     plt.show()
     
     
@@ -2903,7 +2904,7 @@ elif method == 8:
     
     plt.xlabel(r'$\Omega_n$', fontsize='24')
     plt.ylabel(r'$C_*$ ', fontsize='24')
-    plt.savefig('RadiusChange2D.pdf', format = 'pdf', transparent=False)
+    plt.savefig('RadiusChange2D.png', format = 'png', transparent=False)
     plt.show()    
 
     fig = plt.figure(figsize=(8, 6))
@@ -2913,7 +2914,7 @@ elif method == 8:
     
     plt.xlabel(r'$\Omega_n$', fontsize='24')
     plt.ylabel(r'$C_*$ ', fontsize='24')
-    plt.savefig('CompactChange2D.pdf', format = 'pdf', transparent=False)
+    plt.savefig('CompactChange2D.png', format = 'png', transparent=False)
     plt.show()
     '''
 
@@ -2929,7 +2930,7 @@ elif method == 9:
 
     ax.view_init(azim=85,elev=3)
     plt.legend()
-    plt.savefig('Div_from_best_fitR_both.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Div_from_best_fitR_both.png', format = 'png', transparent=False)
     plt.show()    
 elif method==10:    
     x = delta
@@ -2995,7 +2996,7 @@ elif method==10:
 
     plt.colorbar(im, cax=cax)
     plt.clim(0, 0.0814)   
-    plt.savefig('DiverRAll.pdf', format = 'pdf', transparent=False)
+    plt.savefig('DiverRAll.png', format = 'png', transparent=False)
     plt.show()
 elif method == 11:
 
@@ -3023,7 +3024,7 @@ elif method == 11:
     ax.set_zlabel(r'Dev($R/R_*$)', fontsize='24')
     ax.view_init(azim=85,elev=3)
     plt.legend()
-    plt.savefig('Div_from_best_fitR_both_nuc3.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Div_from_best_fitR_both_nuc3.png', format = 'png', transparent=False)
     plt.show()
 elif method==12: 
 
@@ -3092,7 +3093,7 @@ elif method==12:
     cax = divider.append_axes("right", size=width, pad=pad)
 
     plt.colorbar(im, cax=cax)
-    plt.savefig('DiverRAllnuc.pdf', format = 'pdf', transparent=False)
+    plt.savefig('DiverRAllnuc.png', format = 'png', transparent=False)
     plt.show()
 elif method==13:
     plt.scatter(delta_Pol0, R_Pol0/Rstat_Pol0, s=3, label = 'EOS Pol0')
@@ -3108,7 +3109,7 @@ elif method==13:
     plt.legend(prop={"size":16})  
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('R-frac_dim-ang-vel_alleosgreif.pdf', format = 'pdf', transparent=False)
+    plt.savefig('R-frac_dim-ang-vel_alleosgreif.png', format = 'png', transparent=False)
     plt.show()
 elif method == 14:
     ax = fig.add_subplot(projection='3d')
@@ -3122,7 +3123,7 @@ elif method == 14:
 
     ax.view_init(azim=130,elev=0)
     plt.legend()
-    plt.savefig('Div_from_best_fit_both.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Div_from_best_fit_both.png', format = 'png', transparent=False)
     plt.show()
 elif method==15:    
 
@@ -3138,7 +3139,7 @@ elif method==15:
     
     plt.xlabel(r'$\Omega_n$', fontsize='24')
     plt.ylabel(r'$C_*$ ', fontsize='24')
-    plt.savefig('DiverMAll2.pdf', format = 'pdf', transparent=False)
+    plt.savefig('DiverMAll2.png', format = 'png', transparent=False)
     plt.show()
     
 
@@ -3218,7 +3219,7 @@ elif method==15:
 
     plt.colorbar(im, cax=cax)
 
-    plt.savefig('DiverMAll.pdf', format = 'pdf', transparent=False)
+    plt.savefig('DiverMAll.png', format = 'png', transparent=False)
     plt.show()
 elif method == 16:
     
@@ -3242,7 +3243,7 @@ elif method == 16:
     
     ax.view_init(azim=130,elev=0)
     plt.legend()
-    plt.savefig('Div_from_best_fitM_both_nuc4.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Div_from_best_fitM_both_nuc4.png', format = 'png', transparent=False)
     plt.show()
 elif method==17: 
 
@@ -3313,7 +3314,7 @@ elif method==17:
 
     plt.colorbar(im, cax=cax)
 
-    plt.savefig('DiverMAllnuc.pdf', format = 'pdf', transparent=False)
+    plt.savefig('DiverMAllnuc.png', format = 'png', transparent=False)
     plt.show()
 
 elif method==18:
@@ -3330,7 +3331,7 @@ elif method==18:
     plt.legend(prop={"size":16})  
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('Mstat-frac_Ang-vel_alleospol.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Mstat-frac_Ang-vel_alleospol.png', format = 'png', transparent=False)
     plt.show()
 elif method == 19:
     ax = fig.add_subplot(projection='3d')
@@ -3345,7 +3346,7 @@ elif method == 19:
     
     ax.view_init(azim=-119,elev=15)
     plt.legend()
-    plt.savefig('Compact.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Compact.png', format = 'png', transparent=False)
     plt.show()
 
 elif method == 20:
@@ -3358,7 +3359,7 @@ elif method == 20:
     
     ax.view_init(azim=-95,elev=0)
     plt.legend()
-    plt.savefig('Diverg_for_Comp.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Diverg_for_Comp.png', format = 'png', transparent=False)
     plt.show()
 
 elif method==21:    
@@ -3423,7 +3424,7 @@ elif method==21:
     cax = divider.append_axes("right", size=width, pad=pad)
 
     plt.colorbar(im, cax=cax)
-    plt.savefig('DiverCAll.pdf', format = 'pdf', transparent=False)
+    plt.savefig('DiverCAll.png', format = 'png', transparent=False)
     plt.show()
 
 
@@ -3449,7 +3450,7 @@ elif method == 22:
     
     ax.view_init(azim=-95,elev=0)
     plt.legend()
-    plt.savefig('Div_from_best_fitComp_both_nuc.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Div_from_best_fitComp_both_nuc.png', format = 'png', transparent=False)
     plt.show()
 elif method==23: 
 
@@ -3515,7 +3516,7 @@ elif method==23:
     cax = divider.append_axes("right", size=width, pad=pad)
 
     plt.colorbar(im, cax=cax)
-    plt.savefig('DiverCAllnuc.pdf', format = 'pdf', transparent=False)
+    plt.savefig('DiverCAllnuc.png', format = 'png', transparent=False)
     plt.show()
 elif method==24:
     plt.scatter(delta_Pol0, M_Pol0/R_Pol0, s=3, label = 'EOS Pol0')
@@ -3540,7 +3541,7 @@ elif method==24:
     plt.legend(prop={"size":16}) 
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('Comp_eosPP0.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Comp_eosPP0.png', format = 'png', transparent=False)
     plt.show()
     
 elif method==25:    
@@ -3613,7 +3614,7 @@ elif method==25:
     cax = divider.append_axes("right", size=width, pad=pad)
 
     plt.colorbar(im, cax=cax)
-    plt.savefig('DiverCAllBasedonMandR.pdf', format = 'pdf', transparent=False)
+    plt.savefig('DiverCAllBasedonMandR.png', format = 'png', transparent=False)
     plt.show()
 elif method == 26:
 
@@ -3856,7 +3857,7 @@ elif method == 26:
     plt.legend(prop={"size":16})  
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('Mass_Radius_allothereos.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Mass_Radius_allothereos.png', format = 'png', transparent=False)
     plt.show()    
 
 
@@ -3984,7 +3985,7 @@ elif method == 27:
 
     plt.colorbar(im, cax=cax)
 
-    plt.savefig('DiverRAll2.pdf', format = 'pdf', transparent=False)
+    plt.savefig('DiverRAll2.png', format = 'png', transparent=False)
     plt.show()
     
    
@@ -4032,7 +4033,7 @@ elif method == 28:
     plt.legend(prop={"size":16})
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('Kepler2.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Kepler2.png', format = 'png', transparent=False)
     plt.show()    
     '''
     NormD2=(SlopK4*(Mstat/Rstat)**4+SlopK3*(Mstat/Rstat)**3+SlopK2*(Mstat/Rstat)**2+SlopK*Mstat/Rstat+InterK)
@@ -4141,7 +4142,7 @@ elif method == 28:
     cax = divider.append_axes("right", size=width, pad=pad)
 
     plt.colorbar(im, cax=cax)
-    plt.savefig('DiverMAll2.pdf', format = 'pdf', transparent=False)
+    plt.savefig('DiverMAll2.png', format = 'png', transparent=False)
     plt.show()
 
     '''
@@ -4260,7 +4261,7 @@ elif method == 28:
     plt.legend(prop={"size":16})
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('MRcurve3.pdf', format = 'pdf', transparent=False)
+    plt.savefig('MRcurve3.png', format = 'png', transparent=False)
     plt.show()
     
     '''
@@ -4273,7 +4274,7 @@ elif method == 28:
     plt.legend()
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('MRcurve4.pdf', format = 'pdf', transparent=False)
+    plt.savefig('MRcurve4.png', format = 'png', transparent=False)
     plt.show()
     '''
 elif method == 29:    
@@ -4378,7 +4379,7 @@ elif method == 29:
     plt.legend(prop={"size":16})
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('RchangeKepler.pdf', format = 'pdf', transparent=False)
+    plt.savefig('RchangeKepler.png', format = 'png', transparent=False)
     plt.show()
     '''
     
@@ -4407,7 +4408,7 @@ elif method == 29:
     plt.legend(prop={"size":16})
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('MchangeKepler.pdf', format = 'pdf', transparent=False)
+    plt.savefig('MchangeKepler.png', format = 'png', transparent=False)
     plt.show()
     '''
     dum1=np.zeros(len(R_Pol0))
@@ -4503,7 +4504,7 @@ elif method == 29:
     plt.legend(prop={"size":14})
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('MRcurve.pdf', format = 'pdf', transparent=False)
+    plt.savefig('MRcurve.png', format = 'png', transparent=False)
     plt.show() 
 
 
@@ -4521,8 +4522,8 @@ elif method ==30:
     ax.view_init(azim=-90,elev=16)
     #ax.view_init(azim=-120,elev=17)
     plt.legend(loc='best')
-    plt.savefig('Rratio3d.pdf', format = 'pdf', transparent=False)
-    #plt.savefig('BindEChangeBothM.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Rratio3d.png', format = 'png', transparent=False)
+    #plt.savefig('BindEChangeBothM.png', format = 'png', transparent=False)
     plt.show()
 
 
@@ -4563,7 +4564,7 @@ elif method==31:
     
     ax.view_init(azim=134,elev=7)
     plt.legend()
-    plt.savefig('Diverg_for_Rratio_altern.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Diverg_for_Rratio_altern.png', format = 'png', transparent=False)
     plt.show()
     
 
@@ -4632,8 +4633,8 @@ elif method==31:
 
     plt.colorbar(im, cax=cax)
    
-    plt.savefig('DiverRratio.pdf', format = 'pdf', transparent=False)
-    #plt.savefig('DiverAllEb.pdf', format = 'pdf', transparent=False)
+    plt.savefig('DiverRratio.png', format = 'png', transparent=False)
+    #plt.savefig('DiverAllEb.png', format = 'png', transparent=False)
     plt.show()
 
 elif method==32:
@@ -4673,7 +4674,7 @@ elif method==32:
     
     ax.view_init(azim=134,elev=7)
     plt.legend()
-    plt.savefig('Diverg_for_Rratio_altern.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Diverg_for_Rratio_altern.png', format = 'png', transparent=False)
     plt.show()
     
 
@@ -4746,8 +4747,8 @@ elif method==32:
 
     plt.colorbar(im, cax=cax)
    
-    plt.savefig('DiverRratioS.pdf', format = 'pdf', transparent=False)
-    #plt.savefig('DiverAllEb.pdf', format = 'pdf', transparent=False)
+    plt.savefig('DiverRratioS.png', format = 'png', transparent=False)
+    #plt.savefig('DiverAllEb.png', format = 'png', transparent=False)
     plt.show()
 
 
@@ -4775,7 +4776,7 @@ elif method == 33:
     plt.legend(loc='best')
     plt.legend(prop={"size":16}) 
 
-    plt.savefig('KineticEnergyChangeBoth.pdf', format = 'pdf', transparent=False)
+    plt.savefig('KineticEnergyChangeBoth.png', format = 'png', transparent=False)
     plt.show()
 elif method == 34:
     ax = fig.add_subplot(projection='3d')
@@ -4861,7 +4862,7 @@ elif method == 37:
     plt.legend(prop={"size":16})
     plt.xticks(fontsize = 18)
     plt.yticks(fontsize = 18)
-    plt.savefig('Kepler.pdf', format = 'pdf', transparent=False)
+    plt.savefig('Kepler.png', format = 'png', transparent=False)
     plt.show()
 
 
