@@ -16,7 +16,6 @@ import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 import numpy
 import matplotlib.pyplot as plt
-import multipolyfit as mpf
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn import linear_model
 from scipy.optimize import curve_fit
